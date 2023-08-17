@@ -1,0 +1,1 @@
+﻿UPDATE Students SET student_surname = N'Пряникова', student_name = N'Карина', student_patronym = N'Михайловна', student_birthday = '2020-10-10', student_login = 'karina', student_password = 'oboi&' WHERE student_id = 4

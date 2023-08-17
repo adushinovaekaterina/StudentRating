@@ -1,0 +1,1 @@
+﻿INSERT INTO Students VALUES (N'Конфетова', N'Ирина', N'Вячеславовна', '2002-05-25', 'irakonf', 'cakeopera', 3)
