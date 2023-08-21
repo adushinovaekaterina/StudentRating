@@ -87,9 +87,9 @@ namespace StudentRating
 
             if (dataTable.Rows.Count == 1)
             {
-                Form studentRating = new Form();
+                FormRatingJournal studentRatingJournal = new FormRatingJournal();
                 this.Hide();
-                studentRating.ShowDialog();
+                studentRatingJournal.ShowDialog();
                 this.Close();
             }
             else
@@ -103,8 +103,7 @@ namespace StudentRating
         private void textBoxLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {  
-                e.Handled = true;
+            { 
                 e.SuppressKeyPress = true;
                 textBoxPassword.Select();
             }
@@ -113,8 +112,7 @@ namespace StudentRating
         private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {               
-                e.Handled = true;
+            {
                 e.SuppressKeyPress = true;
                 buttonSignIn_Click(sender, e);
             }

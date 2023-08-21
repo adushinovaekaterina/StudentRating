@@ -63,6 +63,136 @@ namespace StudentRating.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap academic_calendar_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("academic-calendar-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap academic_calendar_svgrepo_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("academic-calendar-svgrepo-com (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap academic_calendar_svgrepo_com__1___1_ {
+            get {
+                object obj = ResourceManager.GetObject("academic-calendar-svgrepo-com (1) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap academic_calendar_svgrepo_com__2___1_ {
+            get {
+                object obj = ResourceManager.GetObject("academic-calendar-svgrepo-com (2) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap academic_calendar_svgrepo_com__3_ {
+            get {
+                object obj = ResourceManager.GetObject("academic-calendar-svgrepo-com (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap academic_calendar_svgrepo_com__4_ {
+            get {
+                object obj = ResourceManager.GetObject("academic-calendar-svgrepo-com (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap books {
+            get {
+                object obj = ResourceManager.GetObject("books", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap books_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("books-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap books_svgrepo_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("books-svgrepo-com (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap books_svgrepo_com__2___2_ {
+            get {
+                object obj = ResourceManager.GetObject("books-svgrepo-com (2) (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap books_svgrepo_com__3_ {
+            get {
+                object obj = ResourceManager.GetObject("books-svgrepo-com (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calendar {
+            get {
+                object obj = ResourceManager.GetObject("calendar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calendar_svgrepo_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("calendar-svgrepo-com (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eye_icon {
             get {
                 object obj = ResourceManager.GetObject("eye_icon", resourceCulture);
@@ -76,6 +206,96 @@ namespace StudentRating.Properties {
         internal static System.Drawing.Bitmap eye_slash_icon {
             get {
                 object obj = ResourceManager.GetObject("eye_slash_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_Resize_kbEKiXhWQF {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-Resize-kbEKiXhWQF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_Resize_MV5vjNKfyVolfj {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-Resize-MV5vjNKfyVolfj", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_Resize_OfcvgfAG5bIG {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-Resize-OfcvgfAG5bIG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_Resize_UKiqwzeeilMAa {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-Resize-UKiqwzeeilMAa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_Resize_WGRxWQBYSWdgX9PG {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_book_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("open-book-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_book_svgrepo_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("open-book-svgrepo-com (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_book_svgrepo_com__2_ {
+            get {
+                object obj = ResourceManager.GetObject("open-book-svgrepo-com (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_book_svgrepo_com__3_ {
+            get {
+                object obj = ResourceManager.GetObject("open-book-svgrepo-com (3)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

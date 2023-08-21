@@ -62,16 +62,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormAuthorization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormAuthorization.Designer.cs">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormRatingJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRatingJournal.Designer.cs">
+      <DependentUpon>FormRatingJournal.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormAuthorization.resx">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +89,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="FormRatingJournal.resx">
+      <DependentUpon>FormRatingJournal.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,9 +125,33 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseStudentRating.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\open-book-svgrepo-com %283%29.png" />
+    <None Include="Resources\open-book-svgrepo-com %282%29.png" />
+    <None Include="Resources\open-book-svgrepo-com %281%29.png" />
+    <None Include="Resources\open-book-svgrepo-com.png" />
+    <None Include="Resources\academic-calendar-svgrepo-com %282%29 %281%29.png" />
+    <None Include="Resources\academic-calendar-svgrepo-com %281%29 %281%29.png" />
+    <None Include="Resources\academic-calendar-svgrepo-com %284%29.png" />
+    <None Include="Resources\academic-calendar-svgrepo-com %283%29.png" />
+    <None Include="Resources\academic-calendar-svgrepo-com.png" />
+    <None Include="Resources\academic-calendar-svgrepo-com %281%29.png" />
+    <None Include="Resources\calendar-svgrepo-com %281%29.png" />
+    <None Include="Resources\books-svgrepo-com %283%29.png" />
+    <None Include="Resources\books-svgrepo-com %282%29 %282%29.png" />
+    <None Include="Resources\books-svgrepo-com %281%29.png" />
+    <None Include="Resources\books-svgrepo-com.png" />
+    <None Include="Resources\imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG.png" />
+    <None Include="Resources\imgonline-com-ua-Resize-MV5vjNKfyVolfj.png" />
+    <None Include="Resources\imgonline-com-ua-Resize-kbEKiXhWQF.png" />
+    <None Include="Resources\imgonline-com-ua-Resize-OfcvgfAG5bIG.png" />
+    <None Include="Resources\imgonline-com-ua-Resize-UKiqwzeeilMAa.png" />
+    <None Include="images\calendar.png" />
+    <None Include="images\books.png" />
     <None Include="images\eye_slash_icon.png" />
     <None Include="images\eye_icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
