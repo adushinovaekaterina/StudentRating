@@ -17,12 +17,23 @@ namespace StudentRating
         private int borderSize = 2;
         private Size formSize; // keep form size when it is minimized and restored.Since the form is resized because it takes into account the size of the title bar and borders.
                                // constructor
+        //Fields
+        private Button currentButton;
+        private Random random;
+        private int tempIndex;
+        private Form activeForm;
+
         public FormRatingJournal()
         {
             InitializeComponent();
-            //CollapseMenu();
             this.Padding = new Padding(borderSize);// border size
             this.BackColor = Color.FromArgb(98, 102, 244);// border color
+
+
+            random = new Random();
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         private void FormRatingJournal_Load(object sender, EventArgs e)
@@ -174,6 +185,73 @@ namespace StudentRating
             }
         }
 
+        //Methods
+        private Color SelectThemeColor()
+        {
+            int index = random.Next(ThemeColor.ColorList.Count);
+            while (tempIndex == index)
+            {
+                index = random.Next(ThemeColor.ColorList.Count);
+            }
+            tempIndex = index;
+            string color = ThemeColor.ColorList[index];
+            return ColorTranslator.FromHtml(color);
+        }
+        private void ActivateButton(object btnSender)
+        {
+            if (btnSender != null)
+            {
+                if (currentButton != (Button)btnSender)
+                {
+                    DisableButton();
+                    Color color = SelectThemeColor();
+                    currentButton = (Button)btnSender;
+                    currentButton.BackColor = color;
+                    currentButton.ForeColor = Color.White;
+                    currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                    //panelTitleBar.BackColor = color;
+                    ThemeColor.PrimaryColor = color;
+                    ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                }
+            }
+        }
+        private void DisableButton()
+        {
+            foreach (Control previousBtn in panelMenu.Controls)
+            {
+                if (previousBtn.GetType() == typeof(Button))
+                {
+                    previousBtn.BackColor = Color.FromArgb(98, 102, 244);
+                    previousBtn.ForeColor = Color.White;
+                    previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                }
+            }
+        }
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            ActivateButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelDesktopPanel.Controls.Add(childForm);
+            this.panelDesktopPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            labelTitleBar.Text = childForm.Text;
+        }
+
+        private void Reset()
+        {
+            DisableButton();
+            labelTitle.Text = "HOME";
+            panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
+            panelLogo.BackColor = Color.FromArgb(39, 39, 58);
+            currentButton = null;
+        }
+
         // event methods
         private void FormRatingJournal_Resize(object sender, EventArgs e)
         {
@@ -209,6 +287,23 @@ namespace StudentRating
         {
             Application.Exit();
         }
+
+        private void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormAllSubjectsAllSemesters(), sender);
+        }
+
+        private void buttonCertainSemester_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormCertainSemester(), sender);
+        }
+
+        private void buttonCertainSubject_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormCertainSubject(), sender);
+        }
+
+
 
         //private void OpenChildForm(Form childForm, object buttonSender)
         //{
