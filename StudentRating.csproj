@@ -48,9 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.6.3.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +66,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormAuthorization.cs">
@@ -92,6 +99,7 @@
     <EmbeddedResource Include="FormRatingJournal.resx">
       <DependentUpon>FormRatingJournal.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,6 +133,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseStudentRating.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\certificated_toga_diploma_university_school_graduated_icon_209310.png" />
+    <None Include="Resources\horizontal-rule-svgrepo-com.png" />
+    <None Include="Resources\expand-svgrepo-com.png" />
+    <None Include="Resources\close-svgrepo-com %282%29.png" />
+    <None Include="Resources\close-svgrepo-com %281%29.png" />
+    <None Include="Resources\close-svgrepo-com.png" />
+    <None Include="Resources\bca212d9d4d14f47e92468ffc6a9f076lBdSqmiXQESZ4M1X-0.png" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\menu-svgrepo-com %284%29.png" />
+    <None Include="Resources\menu-svgrepo-com %283%29.png" />
+    <None Include="Resources\menu-svgrepo-com %282%29.png" />
+    <None Include="Resources\menu-svgrepo-com %281%29.png" />
     <None Include="Resources\open-book-svgrepo-com %283%29.png" />
     <None Include="Resources\open-book-svgrepo-com %282%29.png" />
     <None Include="Resources\open-book-svgrepo-com %281%29.png" />

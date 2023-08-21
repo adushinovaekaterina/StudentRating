@@ -123,6 +123,16 @@ namespace StudentRating.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bca212d9d4d14f47e92468ffc6a9f076lBdSqmiXQESZ4M1X_0 {
+            get {
+                object obj = ResourceManager.GetObject("bca212d9d4d14f47e92468ffc6a9f076lBdSqmiXQESZ4M1X-0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap books {
             get {
                 object obj = ResourceManager.GetObject("books", resourceCulture);
@@ -193,6 +203,56 @@ namespace StudentRating.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap certificated_toga_diploma_university_school_graduated_icon_209310 {
+            get {
+                object obj = ResourceManager.GetObject("certificated_toga_diploma_university_school_graduated_icon_209310", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("close-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_svgrepo_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("close-svgrepo-com (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_svgrepo_com__2_ {
+            get {
+                object obj = ResourceManager.GetObject("close-svgrepo-com (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap expand_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("expand-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eye_icon {
             get {
                 object obj = ResourceManager.GetObject("eye_icon", resourceCulture);
@@ -206,6 +266,26 @@ namespace StudentRating.Properties {
         internal static System.Drawing.Bitmap eye_slash_icon {
             get {
                 object obj = ResourceManager.GetObject("eye_slash_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap horizontal_rule_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("horizontal-rule-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image {
+            get {
+                object obj = ResourceManager.GetObject("image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +336,46 @@ namespace StudentRating.Properties {
         internal static System.Drawing.Bitmap imgonline_com_ua_Resize_WGRxWQBYSWdgX9PG {
             get {
                 object obj = ResourceManager.GetObject("imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_svgrepo_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("menu-svgrepo-com (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_svgrepo_com__2_ {
+            get {
+                object obj = ResourceManager.GetObject("menu-svgrepo-com (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_svgrepo_com__3_ {
+            get {
+                object obj = ResourceManager.GetObject("menu-svgrepo-com (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_svgrepo_com__4_ {
+            get {
+                object obj = ResourceManager.GetObject("menu-svgrepo-com (4)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

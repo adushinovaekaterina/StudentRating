@@ -118,23 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="books-svgrepo-com (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\books-svgrepo-com (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendar-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendar-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgonline-com-ua-Resize-OfcvgfAG5bIG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgonline-com-ua-Resize-OfcvgfAG5bIG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="books" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\books.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imgonline-com-ua-Resize-kbEKiXhWQF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgonline-com-ua-Resize-kbEKiXhWQF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgonline-com-ua-Resize-UKiqwzeeilMAa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgonline-com-ua-Resize-UKiqwzeeilMAa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open-book-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open-book-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="books-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\books-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="books-svgrepo-com (2) (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\books-svgrepo-com (2) (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="academic-calendar-svgrepo-com (1) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\academic-calendar-svgrepo-com (1) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,52 +139,91 @@
   <data name="eye_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\eye_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="books" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\books.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="books-svgrepo-com (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\books-svgrepo-com (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="books-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\books-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menu-svgrepo-com (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu-svgrepo-com (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="academic-calendar-svgrepo-com (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\academic-calendar-svgrepo-com (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menu-svgrepo-com (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu-svgrepo-com (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgonline-com-ua-Resize-OfcvgfAG5bIG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgonline-com-ua-Resize-OfcvgfAG5bIG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="academic-calendar-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\academic-calendar-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open-book-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open-book-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye_slash_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\eye_slash_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open-book-svgrepo-com (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open-book-svgrepo-com (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="academic-calendar-svgrepo-com (2) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\academic-calendar-svgrepo-com (2) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="academic-calendar-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\academic-calendar-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="academic-calendar-svgrepo-com (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\academic-calendar-svgrepo-com (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="books-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\books-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="books-svgrepo-com (2) (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\books-svgrepo-com (2) (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="imgonline-com-ua-Resize-MV5vjNKfyVolfj" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgonline-com-ua-Resize-MV5vjNKfyVolfj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendar-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendar-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="expand-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\expand-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="academic-calendar-svgrepo-com (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\academic-calendar-svgrepo-com (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="open-book-svgrepo-com (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\open-book-svgrepo-com (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open-book-svgrepo-com (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open-book-svgrepo-com (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close-svgrepo-com (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close-svgrepo-com (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="academic-calendar-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\academic-calendar-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="academic-calendar-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\academic-calendar-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgonline-com-ua-Resize-UKiqwzeeilMAa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgonline-com-ua-Resize-UKiqwzeeilMAa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu-svgrepo-com (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu-svgrepo-com (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open-book-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open-book-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="academic-calendar-svgrepo-com (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\academic-calendar-svgrepo-com (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgonline-com-ua-Resize-WGRxWQBYSWdgX9PG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="horizontal-rule-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\horizontal-rule-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="academic-calendar-svgrepo-com (2) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\academic-calendar-svgrepo-com (2) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="books-svgrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\books-svgrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bca212d9d4d14f47e92468ffc6a9f076lBdSqmiXQESZ4M1X-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bca212d9d4d14f47e92468ffc6a9f076lBdSqmiXQESZ4M1X-0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eye_slash_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\eye_slash_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open-book-svgrepo-com (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open-book-svgrepo-com (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="certificated_toga_diploma_university_school_graduated_icon_209310" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\certificated_toga_diploma_university_school_graduated_icon_209310.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
