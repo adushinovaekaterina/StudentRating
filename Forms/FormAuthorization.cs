@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StudentRating.Classes;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data;
@@ -14,6 +15,7 @@ namespace StudentRating
 {
     public partial class FormAuthorization : Form
     {
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         // поле для создания подключения к БД
         // благодаря классу SqlConnection происходят все операции с БД
         // через созданное открытое подключение
@@ -70,40 +72,67 @@ namespace StudentRating
         }
 
         private void buttonSignIn_Click(object sender, EventArgs e)
-        {            
-            string login = textBoxLogin.Text;
-            string password = textBoxPassword.Text;
-
-            // два класса для работы с БД
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
-
-            string queryString = $"SELECT student_id, student_login, student_password FROM Students WHERE student_login = '{login}' and student_password = '{password}'";
-
-            SqlCommand sqlCommand = new SqlCommand(queryString, sqlConnection);
-
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            sqlDataAdapter.Fill(dataTable);
-
-            if (dataTable.Rows.Count == 1)
+        {
+            if (!string.IsNullOrEmpty(textBoxLogin.Text) && !string.IsNullOrEmpty(textBoxPassword.Text))
             {
-                FormRatingJournal studentRatingJournal = new FormRatingJournal();
-                this.Hide();
-                studentRatingJournal.ShowDialog();
-                this.Close();
+                // sql-запрос, чтобы выбрать записи, где student_login = textBoxLogin
+                // и student_password = textBoxPassword
+                string querySelectStudent = $"SELECT student_id, student_login, student_password FROM Students WHERE student_login = '{textBoxLogin.Text}' and student_password = '{textBoxPassword.Text}'";
+
+
+                ///!!!!! может и не понадобится, но на всякий напишу
+                string queryGetStudentId = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
+                // объект класса SqlCommand, в который заносим запрос queryGetStudentId и подключение к БД
+                SqlCommand commandGetStudentId = new SqlCommand(queryGetStudentId, dataBaseConnection.getConnection());
+                ///!!!!! может и не понадобится, но на всякий напишу
+
+
+                dataBaseConnection.openConnection();
+                // два класса для работы с БД
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                DataTable dataTable = new DataTable();
+
+                SqlCommand sqlCommand = new SqlCommand(querySelectStudent, sqlConnection);
+
+                sqlDataAdapter.SelectCommand = sqlCommand;
+                sqlDataAdapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count == 1)
+                {
+                    FormRatingJournal studentRatingJournal = new FormRatingJournal();
+                    this.Hide();
+                    studentRatingJournal.ShowDialog();
+                    this.Close();
+                }                
+                else
+                {
+                    MessageBox.Show("Неверный пароль и/или логин!", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPassword.Clear();
+                }
+                sqlConnection.Close();
             }
-            else
+            else if (textBoxLogin.Text == String.Empty && textBoxPassword.Text == String.Empty)
             {
-                MessageBox.Show("Неверный пароль и/или логин", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxPassword.Clear();
+                MessageBox.Show("Введите логин и пароль!", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxLogin.Select();
             }
-            sqlConnection.Close();
+            else if (textBoxLogin.Text == String.Empty)
+            {
+                MessageBox.Show("Введите логин!", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxLogin.Select();
+            }
+            else if (textBoxPassword.Text == String.Empty || textBoxPassword.Text == "\n")
+            {
+                MessageBox.Show("Введите пароль!", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPassword.Select();
+            }
         }
 
         private void textBoxLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             { 
+                e.Handled = true;
                 e.SuppressKeyPress = true;
                 textBoxPassword.Select();
             }
@@ -113,6 +142,7 @@ namespace StudentRating
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.Handled = true;
                 e.SuppressKeyPress = true;
                 buttonSignIn_Click(sender, e);
             }
