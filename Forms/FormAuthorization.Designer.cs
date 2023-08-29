@@ -193,7 +193,7 @@
 
         #endregion
         private System.Windows.Forms.Label labelLogin;
-        private System.Windows.Forms.TextBox textBoxLogin;
+        public System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonSignIn;

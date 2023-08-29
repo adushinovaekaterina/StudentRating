@@ -33,9 +33,7 @@ namespace StudentRating.Forms
 
         public FormAllSubjectsAllSemesters()
         {
-            InitializeComponent();
-            //dataGridViewAllSubjectsAllSemesters.Rows[0].Cells[0].Selected = false;
-            
+            InitializeComponent();            
         }
 
         private void FormAllSubjectsAllSemesters_Load(object sender, EventArgs e)
@@ -58,26 +56,32 @@ namespace StudentRating.Forms
 
         private void CreateColumns()
         {
-            dataGridViewAllSubjectsAllSemesters.Columns.Add("student_name", "Студент");
             dataGridViewAllSubjectsAllSemesters.Columns.Add("subject_name", "Предмет");
-            dataGridViewAllSubjectsAllSemesters.Columns.Add("semester_number", "Семестр");
-            dataGridViewAllSubjectsAllSemesters.Columns.Add("grade_value", "Отметка");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("grade_value", "Моя отметка");
+            //dataGridViewAllSubjectsAllSemesters.Columns.Add("grade_value", "Средний балл в группе");
             dataGridViewAllSubjectsAllSemesters.Columns.Add("typeOfCertification_name", "Вид аттестации");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("semester_number", "Семестр");            
             //dataGridViewAllSubjectsAllSemesters.Columns.Add("IsNew", String.Empty);
         }
 
         private void ReadSingleRow(DataGridView dgw, IDataRecord record)
         {
-            dgw.Rows.Add(record.GetString(0), record.GetString(1), record.GetByte(2),
-                record.GetString(3), record.GetString(4));
-               // RoWState.ModifiedNew);
+            //dgw.Rows.Add(record.GetString(0), record.GetString(1), record.GetFloat(2),
+            //    record.GetString(3), record.GetByte(4));
+            dgw.Rows.Add(record.GetString(0), record.GetString(1), 
+                record.GetString(2), record.GetByte(3));
+            // RoWState.ModifiedNew);
         }
 
         private void RefreshDataGrid(DataGridView dgw)
         {
             dgw.Rows.Clear();
 
-            string queryString = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym), Subjects.subject_name, Semesters.semester_number, Grades.grade_value, Types_Of_Certification.typeOfCertification_name FROM Performance JOIN Students ON Performance.student_id = Students.student_id JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id";
+            //string queryString = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym), Subjects.subject_name, Semesters.semester_number, Grades.grade_value, Types_Of_Certification.typeOfCertification_name FROM Performance JOIN Students ON Performance.student_id = Students.student_id JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id";
+
+            //string queryString = $"SELECT Subjects.subject_name, Grades.grade_value, CAST(Grades.grade_value AS INT), Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id";
+
+            string queryString = $"SELECT Subjects.subject_name, Grades.grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id";
 
             SqlCommand command = new SqlCommand(queryString, sqlConnection);
 

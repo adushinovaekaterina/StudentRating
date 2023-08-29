@@ -162,6 +162,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseStudentRating.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\exit-svgrepo-com.png" />
     <None Include="Resources\open-book-svgrepo-com %287%29.png" />
     <None Include="Resources\books-svgrepo-com %2811%29.png" />
     <None Include="Resources\books-svgrepo-com %2810%29.png" />

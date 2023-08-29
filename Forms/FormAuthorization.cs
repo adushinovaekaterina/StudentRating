@@ -83,7 +83,7 @@ namespace StudentRating
                 ///!!!!! может и не понадобится, но на всякий напишу
                 string queryGetStudentId = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
                 // объект класса SqlCommand, в который заносим запрос queryGetStudentId и подключение к БД
-                SqlCommand commandGetStudentId = new SqlCommand(queryGetStudentId, dataBaseConnection.getConnection());
+                SqlCommand sqlCommandGetStudentId = new SqlCommand(queryGetStudentId, dataBaseConnection.getConnection());
                 ///!!!!! может и не понадобится, но на всякий напишу
 
 
@@ -99,9 +99,24 @@ namespace StudentRating
 
                 if (dataTable.Rows.Count == 1)
                 {
-                    FormRatingJournal studentRatingJournal = new FormRatingJournal();
+                    FormRatingJournal formRatingJournal = new FormRatingJournal();
+
+                    string querySelectStudentNameByLogin = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) FROM Students WHERE student_login = '{textBoxLogin.Text}'";
+                    
+                    SqlCommand sqlCommandSelectStudentNameByLogin = new SqlCommand(querySelectStudentNameByLogin, sqlConnection);
+                    
+                    SqlDataReader reader = sqlCommandSelectStudentNameByLogin.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var nameStudent = reader.GetString(0);
+
+                        formRatingJournal.labelNameStudent.Text = nameStudent;
+                    }
+
+                    reader.Close();                    
                     this.Hide();
-                    studentRatingJournal.ShowDialog();
+                    formRatingJournal.ShowDialog();
                     this.Close();
                 }                
                 else

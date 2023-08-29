@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentRating.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -127,19 +128,32 @@ namespace StudentRating
         // событие клика на кнопку "Журнал рейтинга за все семестры по всем предметам"
         private void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormAllSubjectsAllSemesters(), sender);
+            FormAllSubjectsAllSemesters formAllSubjectsAllSemesters = new FormAllSubjectsAllSemesters();
+            OpenChildForm(formAllSubjectsAllSemesters, sender);
         }
 
         // событие клика на кнопку "Журнал рейтинга за определенный семестр"
         private void buttonCertainSemester_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormCertainSemester(), sender);
+            OpenChildForm(new FormCertainSemester(), sender);
         }
 
         // событие клика на кнопку "Журнал рейтинга по определенному предмету"
         private void buttonCertainSubject_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormCertainSubject(), sender);
+            OpenChildForm(new FormCertainSubject(), sender);
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите выйти из личного кабинета?", "Подтверждение выхода", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                FormAuthorization formAuthorization = new FormAuthorization();
+                this.Hide();
+                formAuthorization.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

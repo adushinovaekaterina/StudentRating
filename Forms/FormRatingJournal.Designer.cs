@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRatingJournal));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.buttonCertainSubject = new System.Windows.Forms.Button();
             this.buttonCertainSemester = new System.Windows.Forms.Button();
             this.buttonAllSubjectsAllSemesters = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.labelTitleBar = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
+            this.labelNameStudent = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -47,6 +49,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.panelMenu.Controls.Add(this.buttonExit);
             this.panelMenu.Controls.Add(this.buttonCertainSubject);
             this.panelMenu.Controls.Add(this.buttonCertainSemester);
             this.panelMenu.Controls.Add(this.buttonAllSubjectsAllSemesters);
@@ -56,6 +59,27 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(250, 729);
             this.panelMenu.TabIndex = 1;
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.AutoSize = true;
+            this.buttonExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonExit.FlatAppearance.BorderSize = 0;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonExit.ForeColor = System.Drawing.Color.White;
+            this.buttonExit.Image = global::StudentRating.Properties.Resources.exit_svgrepo_com;
+            this.buttonExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonExit.Location = new System.Drawing.Point(0, 639);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.buttonExit.Size = new System.Drawing.Size(250, 90);
+            this.buttonExit.TabIndex = 4;
+            this.buttonExit.Tag = "Выйти из личного кабинета";
+            this.buttonExit.Text = "Выйти из личного кабинета";
+            this.buttonExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // buttonCertainSubject
             // 
@@ -156,6 +180,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.White;
+            this.panelTitleBar.Controls.Add(this.labelNameStudent);
             this.panelTitleBar.Controls.Add(this.labelTitleBar);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(250, 0);
@@ -185,6 +210,20 @@
             this.panelDesktopPanel.Name = "panelDesktopPanel";
             this.panelDesktopPanel.Size = new System.Drawing.Size(1100, 729);
             this.panelDesktopPanel.TabIndex = 3;
+            // 
+            // labelNameStudent
+            // 
+            this.labelNameStudent.BackColor = System.Drawing.Color.Transparent;
+            this.labelNameStudent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelNameStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNameStudent.ForeColor = System.Drawing.Color.Black;
+            this.labelNameStudent.Location = new System.Drawing.Point(735, 0);
+            this.labelNameStudent.Name = "labelNameStudent";
+            this.labelNameStudent.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.labelNameStudent.Size = new System.Drawing.Size(362, 70);
+            this.labelNameStudent.TabIndex = 7;
+            this.labelNameStudent.Text = "Имя студента";
+            this.labelNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormRatingJournal
             // 
@@ -220,5 +259,7 @@
         private System.Windows.Forms.Label labelTitleBar;
         private System.Windows.Forms.Panel panelDesktopPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonExit;
+        public System.Windows.Forms.Label labelNameStudent;
     }
 }

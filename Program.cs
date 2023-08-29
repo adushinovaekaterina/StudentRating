@@ -16,7 +16,7 @@ namespace StudentRating
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormRatingJournal());
+            Application.Run(new FormAuthorization());
         }
     }
 }
