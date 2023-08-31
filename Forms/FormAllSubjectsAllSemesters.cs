@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace StudentRating.Forms
 {
@@ -31,9 +33,16 @@ namespace StudentRating.Forms
 
         int selectedRow;
 
-        public FormAllSubjectsAllSemesters()
+        public int studentId;
+
+        private int countNumericGrade = 0;
+
+        private float[] studentGPA;
+
+        public FormAllSubjectsAllSemesters(int studentId)
         {
-            InitializeComponent();            
+            InitializeComponent();  
+            this.studentId = studentId;            
         }
 
         private void FormAllSubjectsAllSemesters_Load(object sender, EventArgs e)
@@ -68,30 +77,86 @@ namespace StudentRating.Forms
         {
             //dgw.Rows.Add(record.GetString(0), record.GetString(1), record.GetFloat(2),
             //    record.GetString(3), record.GetByte(4));
-            dgw.Rows.Add(record.GetString(0), record.GetString(1), 
+            dgw.Rows.Add(record.GetString(0), record.GetString(1),
                 record.GetString(2), record.GetByte(3));
             // RoWState.ModifiedNew);
         }
 
         private void RefreshDataGrid(DataGridView dgw)
-        {
-            dgw.Rows.Clear();
+        {           
+            //dgw.Rows.Clear();
 
-            //string queryString = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym), Subjects.subject_name, Semesters.semester_number, Grades.grade_value, Types_Of_Certification.typeOfCertification_name FROM Performance JOIN Students ON Performance.student_id = Students.student_id JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id";
+            // 1)
+            string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_name, Grades.grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}'";
+            
+            // 2)
+            SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, sqlConnection);
 
-            //string queryString = $"SELECT Subjects.subject_name, Grades.grade_value, CAST(Grades.grade_value AS INT), Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id";
+            // 3)
+            SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
 
-            string queryString = $"SELECT Subjects.subject_name, Grades.grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance JOIN Subjects ON Performance.subject_id = Subjects.subject_id JOIN Grades ON Performance.grade_id = Grades.grade_id JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id JOIN Semesters ON Performance.semester_id = Semesters.semester_id";
-
-            SqlCommand command = new SqlCommand(queryString, sqlConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            while(reader.Read())
+            // 4) 
+            while(readerGetPerformance.Read())
             {
-                ReadSingleRow(dgw, reader);
+                ReadSingleRow(dgw, readerGetPerformance);
             }
-            reader.Close();        
+            // 5)
+            readerGetPerformance.Close();
+
+
+            // список отметок в изначальном строковом формате
+            List<string> listNumericOrStringGrades = new List<string>(); 
+
+            List<float> listNumericGrades = new List<float>(); // список числовых отметок
+
+            float studentGPA = 0; // средний балл отметок студентов
+
+            // 1) получаем все отметки студентов
+            string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id";
+
+            // 2) 
+            SqlCommand sqlCommandGetStudentGrades = new SqlCommand(queryStringGetStudentGrades, sqlConnection);
+
+            // 3) 
+            SqlDataReader readerGetStudentGrades = sqlCommandGetStudentGrades.ExecuteReader();
+
+            int ordinalNumber = readerGetStudentGrades.GetOrdinal("grade_value"); // получаем номер колонки Grades.grade_value
+
+            // 4) 
+            while (readerGetStudentGrades.Read())
+            {
+                labelStudentGrades.Text = "";
+                listNumericOrStringGrades.Add(readerGetStudentGrades.GetString(ordinalNumber)); // читаем текст из колонки под номером ordinalNumber
+                
+                for (int i = 0; i < listNumericOrStringGrades.Count(); i++)
+                {                    
+                    labelStudentGrades.Text += " " + listNumericOrStringGrades[i];
+                }
+            }
+
+            for (int i = 0; i < listNumericOrStringGrades.Count(); i++)
+            {
+                int numericGrade; // конвертированная в численный тип отметка
+                bool isNumber = int.TryParse(listNumericOrStringGrades[i], out numericGrade);
+                if (isNumber)
+                {
+                    labelNumericGrade.Text += " " + numericGrade.ToString();
+                    listNumericGrades.Add(numericGrade);
+                    countNumericGrade++;
+                }
+                else
+                {
+                    labelStringGrade.Text += " " + listNumericOrStringGrades[i];
+                }
+            }
+
+            studentGPA = listNumericGrades.Sum() / listNumericGrades.Count();
+            labelStudentGPA.Text += " " + studentGPA.ToString();
+
+
+            // 5) 
+            readerGetStudentGrades.Close();
+
         }
     }
 }

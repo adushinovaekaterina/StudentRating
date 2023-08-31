@@ -19,12 +19,16 @@ namespace StudentRating
         private int tempIndex; // временный индекс
         private Form activeForm; // активная форма
 
+        public int studentIdFromRatingJournal = 15;
+
         // конструктор формы Журнал рейтинга (родительская форма для остальных форм, связанных с журналом)
-        public FormRatingJournal()
+        public FormRatingJournal(int studentIdFromRatingJournal)
         {
             InitializeComponent();
 
             random = new Random();
+
+            this.studentIdFromRatingJournal = studentIdFromRatingJournal;
         }
 
         private void FormRatingJournal_Load(object sender, EventArgs e)
@@ -128,7 +132,8 @@ namespace StudentRating
         // событие клика на кнопку "Журнал рейтинга за все семестры по всем предметам"
         private void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
         {
-            FormAllSubjectsAllSemesters formAllSubjectsAllSemesters = new FormAllSubjectsAllSemesters();
+            FormAllSubjectsAllSemesters formAllSubjectsAllSemesters = new FormAllSubjectsAllSemesters(studentIdFromRatingJournal);
+            
             OpenChildForm(formAllSubjectsAllSemesters, sender);
         }
 

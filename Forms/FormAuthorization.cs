@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using StudentRating.Forms;
 
 namespace StudentRating
 {
@@ -20,6 +21,8 @@ namespace StudentRating
         // благодаря классу SqlConnection происходят все операции с БД
         // через созданное открытое подключение
         private SqlConnection sqlConnection = null;
+
+        public int studentIdFromFormAuthorization = 5;
 
         public FormAuthorization()
         {
@@ -80,14 +83,14 @@ namespace StudentRating
                 string querySelectStudent = $"SELECT student_id, student_login, student_password FROM Students WHERE student_login = '{textBoxLogin.Text}' and student_password = '{textBoxPassword.Text}'";
 
 
-                ///!!!!! может и не понадобится, но на всякий напишу
-                string queryGetStudentId = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
-                // объект класса SqlCommand, в который заносим запрос queryGetStudentId и подключение к БД
-                SqlCommand sqlCommandGetStudentId = new SqlCommand(queryGetStudentId, dataBaseConnection.getConnection());
-                ///!!!!! может и не понадобится, но на всякий напишу
+                /////!!!!! может и не понадобится, но на всякий напишу
+                //string queryGetStudentId = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
+                //// объект класса SqlCommand, в который заносим запрос queryGetStudentId и подключение к БД
+                //SqlCommand sqlCommandGetStudentId = new SqlCommand(queryGetStudentId, dataBaseConnection.getConnection());
+                /////!!!!! может и не понадобится, но на всякий напишу
 
+                //dataBaseConnection.openConnection();
 
-                dataBaseConnection.openConnection();
                 // два класса для работы с БД
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
                 DataTable dataTable = new DataTable();
@@ -99,7 +102,29 @@ namespace StudentRating
 
                 if (dataTable.Rows.Count == 1)
                 {
-                    FormRatingJournal formRatingJournal = new FormRatingJournal();
+                    // нужно передать id студента, соответствующего его !логину!
+                    // не получается логин взять с текстбокса
+                    // 1)
+                    string queryGetStudentIdByLogin = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
+
+                    // 2)
+                    SqlCommand sqlCommandGetStudentIdByLogin = new SqlCommand(queryGetStudentIdByLogin, sqlConnection);
+
+                    // 3)
+                    SqlDataReader readerGetStudentIdByLogin = sqlCommandGetStudentIdByLogin.ExecuteReader();
+
+                    // 4) 
+                    while (readerGetStudentIdByLogin.Read())
+                    {
+                        studentIdFromFormAuthorization = readerGetStudentIdByLogin.GetInt32(0);                        
+                    }
+                    // 5)
+                    readerGetStudentIdByLogin.Close();
+
+
+
+                    // берем ФИО студента для отображения на лэйбле FormRatinJournal
+                    FormRatingJournal formRatingJournal = new FormRatingJournal(studentIdFromFormAuthorization);
 
                     string querySelectStudentNameByLogin = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) FROM Students WHERE student_login = '{textBoxLogin.Text}'";
                     
@@ -109,12 +134,11 @@ namespace StudentRating
 
                     while (reader.Read())
                     {
-                        var nameStudent = reader.GetString(0);
+                        String nameStudent = reader.GetString(0);
 
                         formRatingJournal.labelNameStudent.Text = nameStudent;
                     }
-
-                    reader.Close();                    
+                    reader.Close();
                     this.Hide();
                     formRatingJournal.ShowDialog();
                     this.Close();
@@ -124,7 +148,6 @@ namespace StudentRating
                     MessageBox.Show("Неверный пароль и/или логин!", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPassword.Clear();
                 }
-                sqlConnection.Close();
             }
             else if (textBoxLogin.Text == String.Empty && textBoxPassword.Text == String.Empty)
             {

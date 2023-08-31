@@ -38,9 +38,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.labelNameStudent = new System.Windows.Forms.Label();
             this.labelTitleBar = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
-            this.labelNameStudent = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -188,6 +188,20 @@
             this.panelTitleBar.Size = new System.Drawing.Size(1100, 70);
             this.panelTitleBar.TabIndex = 2;
             // 
+            // labelNameStudent
+            // 
+            this.labelNameStudent.BackColor = System.Drawing.Color.Transparent;
+            this.labelNameStudent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelNameStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNameStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.labelNameStudent.Location = new System.Drawing.Point(735, 0);
+            this.labelNameStudent.Name = "labelNameStudent";
+            this.labelNameStudent.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.labelNameStudent.Size = new System.Drawing.Size(362, 70);
+            this.labelNameStudent.TabIndex = 7;
+            this.labelNameStudent.Text = "Имя студента";
+            this.labelNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // labelTitleBar
             // 
             this.labelTitleBar.BackColor = System.Drawing.Color.Transparent;
@@ -210,20 +224,6 @@
             this.panelDesktopPanel.Name = "panelDesktopPanel";
             this.panelDesktopPanel.Size = new System.Drawing.Size(1100, 729);
             this.panelDesktopPanel.TabIndex = 3;
-            // 
-            // labelNameStudent
-            // 
-            this.labelNameStudent.BackColor = System.Drawing.Color.Transparent;
-            this.labelNameStudent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelNameStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNameStudent.ForeColor = System.Drawing.Color.Black;
-            this.labelNameStudent.Location = new System.Drawing.Point(735, 0);
-            this.labelNameStudent.Name = "labelNameStudent";
-            this.labelNameStudent.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.labelNameStudent.Size = new System.Drawing.Size(362, 70);
-            this.labelNameStudent.TabIndex = 7;
-            this.labelNameStudent.Text = "Имя студента";
-            this.labelNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormRatingJournal
             // 
