@@ -31,14 +31,14 @@ namespace StudentRating.Forms
 
         //DataBase database = new DataBase();
 
-        int selectedRow;
-
         public int studentId;
+        public int groupId;
 
-        public FormAllSubjectsAllSemesters(int studentId)
+        public FormAllSubjectsAllSemesters(int studentId, int groupId)
         {
             InitializeComponent();  
             this.studentId = studentId;            
+            this.groupId = groupId;
         }
 
         private void FormAllSubjectsAllSemesters_Load(object sender, EventArgs e)
@@ -80,10 +80,62 @@ namespace StudentRating.Forms
 
         private void RefreshDataGridView(DataGridView dataGridView)
         {
+            // -- переменные -- //
+            List<string> listNumericOrStringGradesForCertainSubject = new List<string>(); // список отметок в изначальном строковом формате
+            List<float> listNumericGradesForCertainSubject = new List<float>(); // список числовых отметок
+            int countNumericGradeForCertainSubject = 0;
+            float studentGPAForCertainSubject = 0; // средний балл отметок студентов            
+
+            //////////////////////////////////////////////////////////////////////////////
+           
+            // -- получаем отметки из группы студента, зашедшего в систему и ПО ОПРЕДЕЛЕННОМУ ПРЕДМЕТУ        
+            string queryStringGetStudentGradesForCertainSubject = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Subjects ON Subjects.subject_id = Performance.subject_id WHERE Groups.group_id = '{groupId}' AND Subjects.subject_id = 1";
+            SqlCommand sqlCommandGetStudentGradesForCertainSubject = new SqlCommand(queryStringGetStudentGradesForCertainSubject, sqlConnection);
+            SqlDataReader readerGetStudentGradesForCertainSubject = sqlCommandGetStudentGradesForCertainSubject.ExecuteReader();
+            int ordinalNumberCertainSubject = readerGetStudentGradesForCertainSubject.GetOrdinal("grade_value"); // получаем порядковый номер столбца Grades.grade_value
+            while (readerGetStudentGradesForCertainSubject.Read())
+            {
+                //labelStudentGradesForCertainSubject.Text = "";
+
+                // добавляем в список всех оценок все отметки, полученные от sql-запроса
+                listNumericOrStringGradesForCertainSubject.Add(readerGetStudentGradesForCertainSubject.GetString(ordinalNumberCertainSubject));
+                // выводим все отметки в лейбл для всех отметок
+                for (int i = 0; i < listNumericOrStringGradesForCertainSubject.Count(); i++)
+                {
+                    labelStudentGradesForCertainSubject.Text += " " + listNumericOrStringGradesForCertainSubject[i];
+                }
+            }
+            readerGetStudentGradesForCertainSubject.Close();
+
+            // -- выводим отметки в лейбл для числовых и в лейбл для строковых отметок -- //            
+            for (int i = 0; i < listNumericOrStringGradesForCertainSubject.Count(); i++) // проходимся по всем отметкам в списке
+            {
+                int numericGrade; // конвертированная в численный тип отметка
+                bool isNumber = int.TryParse(listNumericOrStringGradesForCertainSubject[i], out numericGrade);
+                if (isNumber) // если отметка числовая, то выводим ее в соответствующий лейбл
+                {
+                    labelNumericGradesForCertainSubject.Text += " " + numericGrade.ToString();
+                    listNumericGradesForCertainSubject.Add(numericGrade);
+                    countNumericGradeForCertainSubject++;
+                }
+                else // иначе выводим в лейбл для строковых отметок
+                {
+                    labelStringGradesForCertainSubject.Text += " " + listNumericOrStringGradesForCertainSubject[i];
+
+                }
+            }
+            // высчитываем средний балл всех студентов по всем предметам
+            // (! нужно высчитывать средний балл отдельно для каждого предмета!)
+            studentGPAForCertainSubject = (float)Math.Round(listNumericGradesForCertainSubject.Sum() / listNumericGradesForCertainSubject.Count(), 1);
+            labelStudentGPAForCertainSubject.Text += " " + studentGPAForCertainSubject.ToString(); // выводим средний балл в соответствуюищй лейбл
+
+            //////////////////////////////////////////////////////////////////////
+
             // -- получаем успеваемость для студента, вошедшего в систему -- // 
             string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_name, Grades.grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}'";
             SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, sqlConnection);
             SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
+
             while (readerGetPerformance.Read())
             {                
                 ReadSingleRow(dataGridView, readerGetPerformance, "Средний балл такой-то"); // !выводим успеваемость в DataGridView!
@@ -98,8 +150,9 @@ namespace StudentRating.Forms
             float studentGPA = 0; // средний балл отметок студентов
 
 
-            // -- получаем все отметки студентов -- //            
-            string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id";
+            // -- получаем все отметки студентов -- //  !нужны отметки из группы студента, зашедшего в систему          
+            string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}'";
+            //string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id";
             SqlCommand sqlCommandGetStudentGrades = new SqlCommand(queryStringGetStudentGrades, sqlConnection);
             SqlDataReader readerGetStudentGrades = sqlCommandGetStudentGrades.ExecuteReader();            
             int ordinalNumber = readerGetStudentGrades.GetOrdinal("grade_value"); // получаем порядковый номер столбца Grades.grade_value
@@ -123,13 +176,13 @@ namespace StudentRating.Forms
                 bool isNumber = int.TryParse(listNumericOrStringGrades[i], out numericGrade);
                 if (isNumber) // если отметка числовая, то выводим ее в соответствующий лейбл
                 {
-                    labelNumericGrade.Text += " " + numericGrade.ToString();
+                    labelNumericGrades.Text += " " + numericGrade.ToString();
                     listNumericGrades.Add(numericGrade);
                     countNumericGrade++;
                 }
                 else // иначе выводим в лейбл для строковых отметок
                 {
-                    labelStringGrade.Text += " " + listNumericOrStringGrades[i];
+                    labelStringGrades.Text += " " + listNumericOrStringGrades[i];
 
                 }
             }

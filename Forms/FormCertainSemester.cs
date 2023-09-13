@@ -16,5 +16,10 @@ namespace StudentRating.Forms
         {
             InitializeComponent();
         }
+
+        private void comboBoxCertainSemester_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

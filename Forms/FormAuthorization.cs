@@ -22,7 +22,8 @@ namespace StudentRating
         // через созданное открытое подключение
         private SqlConnection sqlConnection = null;
 
-        public int studentIdFromFormAuthorization = 5;
+        public int studentIdFromFormAuthorization;
+        public int groupIdFromFormAuthorization;
 
         public FormAuthorization()
         {
@@ -102,8 +103,6 @@ namespace StudentRating
 
                 if (dataTable.Rows.Count == 1)
                 {
-                    // нужно передать id студента, соответствующего его !логину!
-                    // не получается логин взять с текстбокса
                     // 1)
                     string queryGetStudentIdByLogin = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
 
@@ -121,10 +120,26 @@ namespace StudentRating
                     // 5)
                     readerGetStudentIdByLogin.Close();
 
+                    // 1)
+                    string queryGetGroupId = $"SELECT Groups.group_id FROM Students INNER JOIN Groups ON Students.group_id = Groups.group_id WHERE Students.student_id = '{studentIdFromFormAuthorization}'";
+
+                    // 2)
+                    SqlCommand sqlCommandGetGroupId = new SqlCommand(queryGetGroupId, sqlConnection);
+
+                    // 3)
+                    SqlDataReader readerGetGroupId = sqlCommandGetGroupId.ExecuteReader();
+
+                    // 4) 
+                    while (readerGetGroupId.Read())
+                    {
+                        groupIdFromFormAuthorization = readerGetGroupId.GetInt32(0);                        
+                    }
+                    // 5)
+                    readerGetGroupId.Close();
 
 
                     // берем ФИО студента для отображения на лэйбле FormRatinJournal
-                    FormRatingJournal formRatingJournal = new FormRatingJournal(studentIdFromFormAuthorization);
+                    FormRatingJournal formRatingJournal = new FormRatingJournal(studentIdFromFormAuthorization, groupIdFromFormAuthorization);
 
                     string querySelectStudentNameByLogin = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) FROM Students WHERE student_login = '{textBoxLogin.Text}'";
                     
