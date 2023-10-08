@@ -88,7 +88,7 @@ namespace StudentRating.Forms
 
             //////////////////////////////////////////////////////////////////////////////
            
-            // -- получаем отметки из группы студента, зашедшего в систему и ПО ОПРЕДЕЛЕННОМУ ПРЕДМЕТУ        
+            // -- получаем отметки всех студентов из группы студента, зашедшего в систему и ПО ОПРЕДЕЛЕННОМУ ПРЕДМЕТУ        
             string queryStringGetStudentGradesForCertainSubject = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Subjects ON Subjects.subject_id = Performance.subject_id WHERE Groups.group_id = '{groupId}' AND Subjects.subject_id = 1";
             SqlCommand sqlCommandGetStudentGradesForCertainSubject = new SqlCommand(queryStringGetStudentGradesForCertainSubject, sqlConnection);
             SqlDataReader readerGetStudentGradesForCertainSubject = sqlCommandGetStudentGradesForCertainSubject.ExecuteReader();
@@ -142,6 +142,19 @@ namespace StudentRating.Forms
             }            
             readerGetPerformance.Close();
 
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_id, Grades.grade_value FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}'";
+            SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, sqlConnection);
+            SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
+
+            while (readerGetPerformance.Read())
+            {
+                ReadSingleRow(dataGridView, readerGetPerformance, "Средний балл такой-то"); // !выводим успеваемость в DataGridView!
+            }
+            readerGetPerformance.Close();
+
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             // -- переменные -- //
             List<string> listNumericOrStringGrades = new List<string>(); // список отметок в изначальном строковом формате
