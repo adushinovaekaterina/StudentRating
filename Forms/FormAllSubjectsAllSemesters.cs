@@ -144,15 +144,15 @@ namespace StudentRating.Forms
 
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_id, Grades.grade_value FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}'";
-            SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, sqlConnection);
-            SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
+            ////////////////string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_id, Grades.grade_value FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}'";
+            ////////////////SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, sqlConnection);
+            ////////////////SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
 
-            while (readerGetPerformance.Read())
-            {
-                ReadSingleRow(dataGridView, readerGetPerformance, "Средний балл такой-то"); // !выводим успеваемость в DataGridView!
-            }
-            readerGetPerformance.Close();
+            ////////////////while (readerGetPerformance.Read())
+            ////////////////{
+            ////////////////    ReadSingleRow(dataGridView, readerGetPerformance, "Средний балл такой-то"); // !выводим успеваемость в DataGridView!
+            ////////////////}
+            ////////////////readerGetPerformance.Close();
 
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
