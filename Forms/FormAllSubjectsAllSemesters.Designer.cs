@@ -39,6 +39,7 @@
             this.labelStudentGradesForCertainSubject = new System.Windows.Forms.Label();
             this.labelNumericGradesForCertainSubject = new System.Windows.Forms.Label();
             this.labelStringGradesForCertainSubject = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllSubjectsAllSemesters)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +73,7 @@
             this.dataGridViewAllSubjectsAllSemesters.Location = new System.Drawing.Point(173, 125);
             this.dataGridViewAllSubjectsAllSemesters.Name = "dataGridViewAllSubjectsAllSemesters";
             this.dataGridViewAllSubjectsAllSemesters.ReadOnly = true;
+            this.dataGridViewAllSubjectsAllSemesters.RowHeadersWidth = 56;
             this.dataGridViewAllSubjectsAllSemesters.Size = new System.Drawing.Size(878, 209);
             this.dataGridViewAllSubjectsAllSemesters.TabIndex = 0;
             // 
@@ -148,11 +150,21 @@
             this.labelStringGradesForCertainSubject.TabIndex = 8;
             this.labelStringGradesForCertainSubject.Text = "Все строковые отметки по ин.язу";
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(524, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(165, 100);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Все оценки студентов";
+            // 
             // FormAllSubjectsAllSemesters
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 701);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelStringGradesForCertainSubject);
             this.Controls.Add(this.labelNumericGradesForCertainSubject);
             this.Controls.Add(this.labelStudentGradesForCertainSubject);
@@ -183,5 +195,6 @@
         private System.Windows.Forms.Label labelStudentGradesForCertainSubject;
         private System.Windows.Forms.Label labelNumericGradesForCertainSubject;
         private System.Windows.Forms.Label labelStringGradesForCertainSubject;
+        private System.Windows.Forms.Label label1;
     }
 }
