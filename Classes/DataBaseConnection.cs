@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentRating.Classes
 {
@@ -22,7 +17,7 @@ namespace StudentRating.Classes
         // но если не написать в конце ConnectionString, то вернется вся строка подключения
         // а у нее есть имя, сама строка подключения = путь к БД (она нам и нужна)
 
-        public void openConnection()
+        public void OpenConnection()
         {
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
             {
@@ -37,7 +32,7 @@ namespace StudentRating.Classes
             }
         }
 
-        public void closeConnection() 
+        public void CloseConnection() 
         {
             if (sqlConnection.State == System.Data.ConnectionState.Open) 
             {
@@ -46,7 +41,7 @@ namespace StudentRating.Classes
         }
 
         // метод для возвращения строки подключения, нужно для того чтобы выполнять команды
-        public SqlConnection getConnection() 
+        public SqlConnection GetConnection() 
         { 
             return sqlConnection; 
         }

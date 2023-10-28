@@ -1,26 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StudentRating.Classes;
 using System.Windows.Forms;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using StudentRating.Forms;
 
 namespace StudentRating
 {
     public partial class FormAuthorization : Form
     {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
-        // поле для создания подключения к БД
-        // благодаря классу SqlConnection происходят все операции с БД
-        // через созданное открытое подключение
-        private SqlConnection sqlConnection = null;
 
         public int studentIdFromFormAuthorization;
         public int groupIdFromFormAuthorization;
@@ -30,51 +18,30 @@ namespace StudentRating
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen; // форма будет по центру
         }
-
         private void FormAuthorization_Load(object sender, EventArgs e)
         {
-            // для того чтобы вытащить строку подключения из файла настроек нужно прописать это:
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringDatabaseStudentRating"].ConnectionString);
-            // нужен класс ConfigurationManager и его свойство ConnectionStrings
-            // (это словарь и по ключу мы можем получать значения
-            // ключом является "ConnectionStringsDatabaseStudentRating")
-            // но если не написать в конце ConnectionString, то вернется вся строка подключения
-            // а у нее есть имя, сама строка подключения = путь к БД (она нам и нужна)
-
-            // открываем подключение к БД, иначе ничего не будет работать
-            sqlConnection.Open();
-
-            //// проверка, установилось ли подключение к БД
-            //if (sqlConnection.State == ConnectionState.Open)
-            //{
-            //    MessageBox.Show("Подключение к БД установлено!");
-            //}
+            dataBaseConnection.OpenConnection();
         }
-
         private void labelForgotPassword_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Если вы забыли пароль, то напишите на почту adushinova2002@mail.ru", "Восстановление пароля", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
             pictureBoxEyeSlash.Visible = true;
             pictureBoxEye.Visible = false;
             textBoxPassword.PasswordChar = '\0';
         }
-
         private void pictureBoxEyeSlash_Click(object sender, EventArgs e)
         {            
             pictureBoxEyeSlash.Visible = false;
             pictureBoxEye.Visible = true;
             textBoxPassword.PasswordChar = '•';
         }
-
         private void labelWithoutAccount_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Если у вас нет аккаунта в системе 'Журнал рейтинга студентов', то напишите на почту adushinova2002@mail.ru", "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(textBoxLogin.Text) && !string.IsNullOrEmpty(textBoxPassword.Text))
@@ -90,68 +57,47 @@ namespace StudentRating
                 //SqlCommand sqlCommandGetStudentId = new SqlCommand(queryGetStudentId, dataBaseConnection.getConnection());
                 /////!!!!! может и не понадобится, но на всякий напишу
 
-                //dataBaseConnection.openConnection();
-
                 // два класса для работы с БД
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
                 DataTable dataTable = new DataTable();
 
-                SqlCommand sqlCommand = new SqlCommand(querySelectStudent, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(querySelectStudent, dataBaseConnection.GetConnection());
 
                 sqlDataAdapter.SelectCommand = sqlCommand;
                 sqlDataAdapter.Fill(dataTable);
 
                 if (dataTable.Rows.Count == 1)
                 {
-                    // 1)
+                    // получаем studentId по логину пользователя для передачи studentId на другие формы
                     string queryGetStudentIdByLogin = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
-
-                    // 2)
-                    SqlCommand sqlCommandGetStudentIdByLogin = new SqlCommand(queryGetStudentIdByLogin, sqlConnection);
-
-                    // 3)
+                    SqlCommand sqlCommandGetStudentIdByLogin = new SqlCommand(queryGetStudentIdByLogin, dataBaseConnection.GetConnection());
                     SqlDataReader readerGetStudentIdByLogin = sqlCommandGetStudentIdByLogin.ExecuteReader();
-
-                    // 4) 
                     while (readerGetStudentIdByLogin.Read())
                     {
                         studentIdFromFormAuthorization = readerGetStudentIdByLogin.GetInt32(0);                        
                     }
-                    // 5)
                     readerGetStudentIdByLogin.Close();
 
-                    // 1)
+                    // получаем groupId по studentId для передачи groupId на другие формы
                     string queryGetGroupId = $"SELECT Groups.group_id FROM Students INNER JOIN Groups ON Students.group_id = Groups.group_id WHERE Students.student_id = '{studentIdFromFormAuthorization}'";
-
-                    // 2)
-                    SqlCommand sqlCommandGetGroupId = new SqlCommand(queryGetGroupId, sqlConnection);
-
-                    // 3)
+                    SqlCommand sqlCommandGetGroupId = new SqlCommand(queryGetGroupId, dataBaseConnection.GetConnection());
                     SqlDataReader readerGetGroupId = sqlCommandGetGroupId.ExecuteReader();
-
-                    // 4) 
                     while (readerGetGroupId.Read())
                     {
                         groupIdFromFormAuthorization = readerGetGroupId.GetInt32(0);                        
                     }
-                    // 5)
                     readerGetGroupId.Close();
-
-
-                    // берем ФИО студента для отображения на лэйбле FormRatinJournal
+                    
                     FormRatingJournal formRatingJournal = new FormRatingJournal(studentIdFromFormAuthorization, groupIdFromFormAuthorization);
-
+                    
+                    // берем ФИО студента для отображения на лэйбле FormRatingJournal
                     string querySelectStudentNameByLogin = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) FROM Students WHERE student_login = '{textBoxLogin.Text}'";
-                    
-                    SqlCommand sqlCommandSelectStudentNameByLogin = new SqlCommand(querySelectStudentNameByLogin, sqlConnection);
-                    
+                    SqlCommand sqlCommandSelectStudentNameByLogin = new SqlCommand(querySelectStudentNameByLogin, dataBaseConnection.GetConnection());                    
                     SqlDataReader reader = sqlCommandSelectStudentNameByLogin.ExecuteReader();
-
                     while (reader.Read())
                     {
-                        String nameStudent = reader.GetString(0);
-
-                        formRatingJournal.labelNameStudent.Text = nameStudent;
+                        String FIOstudent = reader.GetString(0);
+                        formRatingJournal.labelNameStudent.Text = FIOstudent;
                     }
                     reader.Close();
                     this.Hide();
@@ -180,7 +126,6 @@ namespace StudentRating
                 textBoxPassword.Select();
             }
         }
-
         private void textBoxLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -190,7 +135,6 @@ namespace StudentRating
                 textBoxPassword.Select();
             }
         }
-
         private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -200,10 +144,9 @@ namespace StudentRating
                 buttonSignIn_Click(sender, e);
             }
         }
-
         private void FormAuthorization_FormClosed(object sender, FormClosedEventArgs e)
         {
-            sqlConnection.Close();
+            dataBaseConnection.CloseConnection();
         }
     }
 }
