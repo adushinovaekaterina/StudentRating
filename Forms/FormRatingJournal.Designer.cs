@@ -56,8 +56,9 @@
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(250, 729);
+            this.panelMenu.Size = new System.Drawing.Size(333, 897);
             this.panelMenu.TabIndex = 1;
             // 
             // buttonExit
@@ -70,10 +71,11 @@
             this.buttonExit.ForeColor = System.Drawing.Color.White;
             this.buttonExit.Image = global::StudentRating.Properties.Resources.exit_svgrepo_com;
             this.buttonExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExit.Location = new System.Drawing.Point(0, 639);
+            this.buttonExit.Location = new System.Drawing.Point(0, 786);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.buttonExit.Size = new System.Drawing.Size(250, 90);
+            this.buttonExit.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.buttonExit.Size = new System.Drawing.Size(333, 111);
             this.buttonExit.TabIndex = 4;
             this.buttonExit.Tag = "Выйти из личного кабинета";
             this.buttonExit.Text = "Выйти из личного кабинета";
@@ -91,10 +93,11 @@
             this.buttonCertainSubject.ForeColor = System.Drawing.Color.White;
             this.buttonCertainSubject.Image = global::StudentRating.Properties.Resources.open_book_svgrepo_com__7_;
             this.buttonCertainSubject.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCertainSubject.Location = new System.Drawing.Point(0, 290);
+            this.buttonCertainSubject.Location = new System.Drawing.Point(0, 357);
+            this.buttonCertainSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCertainSubject.Name = "buttonCertainSubject";
-            this.buttonCertainSubject.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.buttonCertainSubject.Size = new System.Drawing.Size(250, 90);
+            this.buttonCertainSubject.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.buttonCertainSubject.Size = new System.Drawing.Size(333, 111);
             this.buttonCertainSubject.TabIndex = 3;
             this.buttonCertainSubject.Tag = "По определенному предмету";
             this.buttonCertainSubject.Text = " По определенному предмету";
@@ -112,10 +115,11 @@
             this.buttonCertainSemester.ForeColor = System.Drawing.Color.White;
             this.buttonCertainSemester.Image = global::StudentRating.Properties.Resources.academic_calendar_svgrepo_com__3___1_;
             this.buttonCertainSemester.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCertainSemester.Location = new System.Drawing.Point(0, 200);
+            this.buttonCertainSemester.Location = new System.Drawing.Point(0, 246);
+            this.buttonCertainSemester.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCertainSemester.Name = "buttonCertainSemester";
-            this.buttonCertainSemester.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.buttonCertainSemester.Size = new System.Drawing.Size(250, 90);
+            this.buttonCertainSemester.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.buttonCertainSemester.Size = new System.Drawing.Size(333, 111);
             this.buttonCertainSemester.TabIndex = 2;
             this.buttonCertainSemester.Tag = "За определенный семестр";
             this.buttonCertainSemester.Text = "  За определенный семестр";
@@ -133,10 +137,11 @@
             this.buttonAllSubjectsAllSemesters.ForeColor = System.Drawing.Color.White;
             this.buttonAllSubjectsAllSemesters.Image = global::StudentRating.Properties.Resources.books_svgrepo_com__11_;
             this.buttonAllSubjectsAllSemesters.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAllSubjectsAllSemesters.Location = new System.Drawing.Point(0, 110);
+            this.buttonAllSubjectsAllSemesters.Location = new System.Drawing.Point(0, 135);
+            this.buttonAllSubjectsAllSemesters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAllSubjectsAllSemesters.Name = "buttonAllSubjectsAllSemesters";
-            this.buttonAllSubjectsAllSemesters.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.buttonAllSubjectsAllSemesters.Size = new System.Drawing.Size(250, 90);
+            this.buttonAllSubjectsAllSemesters.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.buttonAllSubjectsAllSemesters.Size = new System.Drawing.Size(333, 111);
             this.buttonAllSubjectsAllSemesters.TabIndex = 1;
             this.buttonAllSubjectsAllSemesters.Tag = "   По всем     предметам за все семестры ";
             this.buttonAllSubjectsAllSemesters.Text = "   По всем\r\n   предметам \r\n   за все семестры";
@@ -151,16 +156,18 @@
             this.panelLogo.Controls.Add(this.buttonMenu);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(250, 110);
+            this.panelLogo.Size = new System.Drawing.Size(333, 135);
             this.panelLogo.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Обычный", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(106, 37);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(141, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 35);
+            this.label1.Size = new System.Drawing.Size(153, 53);
             this.label1.TabIndex = 1;
             this.label1.Text = "Рейтинг студентов";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,8 +178,9 @@
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenu.Image = global::StudentRating.Properties.Resources.menu_svgrepo_com__4_;
             this.buttonMenu.Location = new System.Drawing.Point(0, 0);
+            this.buttonMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(100, 110);
+            this.buttonMenu.Size = new System.Drawing.Size(133, 135);
             this.buttonMenu.TabIndex = 0;
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
@@ -183,9 +191,10 @@
             this.panelTitleBar.Controls.Add(this.labelNameStudent);
             this.panelTitleBar.Controls.Add(this.labelTitleBar);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(250, 0);
+            this.panelTitleBar.Location = new System.Drawing.Point(333, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1100, 70);
+            this.panelTitleBar.Size = new System.Drawing.Size(1467, 86);
             this.panelTitleBar.TabIndex = 2;
             // 
             // labelNameStudent
@@ -194,10 +203,11 @@
             this.labelNameStudent.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelNameStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelNameStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
-            this.labelNameStudent.Location = new System.Drawing.Point(735, 0);
+            this.labelNameStudent.Location = new System.Drawing.Point(980, 0);
+            this.labelNameStudent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNameStudent.Name = "labelNameStudent";
-            this.labelNameStudent.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
-            this.labelNameStudent.Size = new System.Drawing.Size(362, 70);
+            this.labelNameStudent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.labelNameStudent.Size = new System.Drawing.Size(483, 86);
             this.labelNameStudent.TabIndex = 7;
             this.labelNameStudent.Text = "Имя студента";
             this.labelNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -209,9 +219,10 @@
             this.labelTitleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTitleBar.ForeColor = System.Drawing.Color.Black;
             this.labelTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.labelTitleBar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitleBar.Name = "labelTitleBar";
-            this.labelTitleBar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.labelTitleBar.Size = new System.Drawing.Size(735, 70);
+            this.labelTitleBar.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.labelTitleBar.Size = new System.Drawing.Size(980, 86);
             this.labelTitleBar.TabIndex = 6;
             this.labelTitleBar.Text = "ЖУРНАЛ РЕЙТИНГА СТУДЕНТОВ ПО ВСЕМ ПРЕДМЕТАМ ЗА ВСЕ СЕМЕСТРЫ";
             this.labelTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -220,22 +231,24 @@
             // 
             this.panelDesktopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPanel.Location = new System.Drawing.Point(250, 0);
+            this.panelDesktopPanel.Location = new System.Drawing.Point(333, 0);
+            this.panelDesktopPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelDesktopPanel.Name = "panelDesktopPanel";
-            this.panelDesktopPanel.Size = new System.Drawing.Size(1100, 729);
+            this.panelDesktopPanel.Size = new System.Drawing.Size(1467, 897);
             this.panelDesktopPanel.TabIndex = 3;
             // 
             // FormRatingJournal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1800, 897);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelDesktopPanel);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(960, 380);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1274, 456);
             this.Name = "FormRatingJournal";
             this.Text = "Журнал рейтинга студентов";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

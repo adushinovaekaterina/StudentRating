@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewAllSubjectsAllSemesters = new System.Windows.Forms.DataGridView();
             this.labelStudentGrades = new System.Windows.Forms.Label();
             this.labelNumericGrades = new System.Windows.Forms.Label();
@@ -39,7 +39,6 @@
             this.labelStudentGradesForCertainSubject = new System.Windows.Forms.Label();
             this.labelNumericGradesForCertainSubject = new System.Windows.Forms.Label();
             this.labelStringGradesForCertainSubject = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllSubjectsAllSemesters)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,28 +52,28 @@
             this.dataGridViewAllSubjectsAllSemesters.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewAllSubjectsAllSemesters.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewAllSubjectsAllSemesters.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAllSubjectsAllSemesters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAllSubjectsAllSemesters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewAllSubjectsAllSemesters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAllSubjectsAllSemesters.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAllSubjectsAllSemesters.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewAllSubjectsAllSemesters.Location = new System.Drawing.Point(173, 125);
             this.dataGridViewAllSubjectsAllSemesters.Name = "dataGridViewAllSubjectsAllSemesters";
             this.dataGridViewAllSubjectsAllSemesters.ReadOnly = true;
             this.dataGridViewAllSubjectsAllSemesters.RowHeadersWidth = 56;
-            this.dataGridViewAllSubjectsAllSemesters.Size = new System.Drawing.Size(878, 209);
+            this.dataGridViewAllSubjectsAllSemesters.Size = new System.Drawing.Size(961, 209);
             this.dataGridViewAllSubjectsAllSemesters.TabIndex = 0;
             // 
             // labelStudentGrades
@@ -117,54 +116,45 @@
             // labelStudentGPAForCertainSubject
             // 
             this.labelStudentGPAForCertainSubject.ForeColor = System.Drawing.Color.Black;
-            this.labelStudentGPAForCertainSubject.Location = new System.Drawing.Point(196, 337);
+            this.labelStudentGPAForCertainSubject.Location = new System.Drawing.Point(2, 446);
             this.labelStudentGPAForCertainSubject.Name = "labelStudentGPAForCertainSubject";
-            this.labelStudentGPAForCertainSubject.Size = new System.Drawing.Size(281, 30);
+            this.labelStudentGPAForCertainSubject.Size = new System.Drawing.Size(178, 65);
             this.labelStudentGPAForCertainSubject.TabIndex = 5;
             this.labelStudentGPAForCertainSubject.Text = "Ср. балл для ин.яз";
             // 
             // labelStudentGradesForCertainSubject
             // 
             this.labelStudentGradesForCertainSubject.BackColor = System.Drawing.Color.Red;
-            this.labelStudentGradesForCertainSubject.Location = new System.Drawing.Point(196, 367);
+            this.labelStudentGradesForCertainSubject.Location = new System.Drawing.Point(2, 501);
             this.labelStudentGradesForCertainSubject.Name = "labelStudentGradesForCertainSubject";
-            this.labelStudentGradesForCertainSubject.Size = new System.Drawing.Size(165, 100);
+            this.labelStudentGradesForCertainSubject.Size = new System.Drawing.Size(165, 103);
             this.labelStudentGradesForCertainSubject.TabIndex = 6;
             this.labelStudentGradesForCertainSubject.Text = "Все оценки по ин.язу";
             // 
             // labelNumericGradesForCertainSubject
             // 
             this.labelNumericGradesForCertainSubject.BackColor = System.Drawing.Color.Lime;
-            this.labelNumericGradesForCertainSubject.Location = new System.Drawing.Point(196, 478);
+            this.labelNumericGradesForCertainSubject.Location = new System.Drawing.Point(2, 612);
             this.labelNumericGradesForCertainSubject.Name = "labelNumericGradesForCertainSubject";
-            this.labelNumericGradesForCertainSubject.Size = new System.Drawing.Size(178, 100);
+            this.labelNumericGradesForCertainSubject.Size = new System.Drawing.Size(178, 103);
             this.labelNumericGradesForCertainSubject.TabIndex = 7;
             this.labelNumericGradesForCertainSubject.Text = "Все численные отметки по ин.язу";
             // 
             // labelStringGradesForCertainSubject
             // 
             this.labelStringGradesForCertainSubject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelStringGradesForCertainSubject.Location = new System.Drawing.Point(196, 592);
+            this.labelStringGradesForCertainSubject.Location = new System.Drawing.Point(2, 726);
             this.labelStringGradesForCertainSubject.Name = "labelStringGradesForCertainSubject";
-            this.labelStringGradesForCertainSubject.Size = new System.Drawing.Size(176, 100);
+            this.labelStringGradesForCertainSubject.Size = new System.Drawing.Size(176, 103);
             this.labelStringGradesForCertainSubject.TabIndex = 8;
             this.labelStringGradesForCertainSubject.Text = "Все строковые отметки по ин.язу";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(524, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 100);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Все оценки студентов";
             // 
             // FormAllSubjectsAllSemesters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 701);
-            this.Controls.Add(this.label1);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1264, 829);
             this.Controls.Add(this.labelStringGradesForCertainSubject);
             this.Controls.Add(this.labelNumericGradesForCertainSubject);
             this.Controls.Add(this.labelStudentGradesForCertainSubject);
@@ -195,6 +185,5 @@
         private System.Windows.Forms.Label labelStudentGradesForCertainSubject;
         private System.Windows.Forms.Label labelNumericGradesForCertainSubject;
         private System.Windows.Forms.Label labelStringGradesForCertainSubject;
-        private System.Windows.Forms.Label label1;
     }
 }

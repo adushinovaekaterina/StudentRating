@@ -66,6 +66,7 @@ namespace StudentRating.Forms
             dataGridViewAllSubjectsAllSemesters.Columns.Add("grade_value", "Средний балл в группе");
             dataGridViewAllSubjectsAllSemesters.Columns.Add("typeOfCertification_name", "Вид аттестации");
             dataGridViewAllSubjectsAllSemesters.Columns.Add("semester_number", "Семестр");
+            
             //dataGridViewAllSubjectsAllSemesters.Columns.Add("IsNew", String.Empty);
         }
 
@@ -90,27 +91,36 @@ namespace StudentRating.Forms
         {
             string subjectName = record.IsDBNull(0) ? "" : record.GetString(0);
             string studentGradeValue = record.IsDBNull(1) ? "" : record.GetString(1);
-            string averageGrade = IsZachteno(record,2);
-            //string typeOfCertification = record.IsDBNull(3) ? "" : GetSafeString(record, 3);
-            //string semester = record.IsDBNull(4) ? "" : GetSafeString(record, 4);
+            decimal averageGrade = record.IsDBNull(2) ? 0 : record.GetDecimal(2);
+            string typeOfCertification = record.IsDBNull(3) ? "" : record.GetString(3);
+            byte semester = (byte)(record.IsDBNull(4) ? 0 : record.GetByte(4));
 
-            dataGridView.Rows.Add(subjectName, studentGradeValue, averageGrade/*, typeOfCertification, semester*/);
-            var d1 = dataGridView[2,0].Value;
+            dataGridView.Rows.Add(subjectName, studentGradeValue, averageGrade, typeOfCertification, semester);
+            //var d1 = dataGridView[2, 0].Value;
             //var d2 = dataGridView[2, 1].Value;
         }
 
-        private string IsZachteno (IDataRecord record, int i)
-        {
-            
-            if (record.GetString(i) == "зачтено")
-            {
-                return record.GetString(i);
-            } else
-            {
-                return record.GetString(i)    ;        
-            }
-           
-        }
+        //private void ReadSingleRow(DataGridView dataGridView, IDataRecord record)
+        //{
+        //    //dataGridView.Rows.Add(record.GetString(0), record.GetString(1), record.GetFloat(2),
+        //    //    record.GetString(3), record.GetByte(4));
+        //    dataGridView.Rows.Add(record.GetString(0), record.GetString(1),
+        //        record.GetString(2), record.GetByte(3));
+        //    // RoWState.ModifiedNew);
+        //}
+
+        //private string IsZachteno (IDataRecord record, int i)
+        //{
+
+        //    if (record.GetString(i) == "зачтено")
+        //    {
+        //        return record.GetString(i);
+        //    } else
+        //    {
+        //        return record.GetString(i)    ;        
+        //    }
+
+        //}
 
 
         //private string GetSafeString(IDataRecord record, int index)
@@ -180,7 +190,8 @@ namespace StudentRating.Forms
             // -- получаем успеваемость для студента, вошедшего в систему -- // 
             //string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_name, Grades.grade_value, CAST(AVG(CAST(Grades.grade_value AS INT)) AS VARCHAR) AS average_grade, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}' AND ISNUMERIC(Grades.grade_value) = 1 GROUP BY Subjects.subject_name, Grades.grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number";
             // ошибка bound string queryStringGetPerformanceByStudentId = $"SELECT subquery.subject_name, subquery.grade_value, CAST(avg_grade.average_grade AS VARCHAR) AS average_grade FROM (SELECT Subjects.subject_name, Grades.grade_value AS grade_value FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id WHERE Performance.student_id = '{studentId}') AS subquery CROSS JOIN (SELECT AVG(TRY_CONVERT(INT, Grades.grade_value)) AS average_grade FROM Performance INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id WHERE Performance.student_id = '{studentId}') AS avg_grade INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id";
-            string queryStringGetPerformanceByStudentId = $"SELECT subquery.subject_name, subquery.grade_value, CAST(avg_grade.average_grade AS VARCHAR) average_grade FROM (SELECT Subjects.subject_name, Grades.grade_value FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id WHERE Performance.student_id = '{studentId}') subquery CROSS JOIN (SELECT AVG(TRY_CONVERT(INT, Grades.grade_value)) average_grade FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id WHERE Performance.student_id = '{studentId}') avg_grade";
+            // оригинал string queryStringGetPerformanceByStudentId = $"SELECT Subjects.subject_name, Grades.grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Performance.student_id = '{studentId}'"; 
+            string queryStringGetPerformanceByStudentId = $"SELECT A.subject_name AS 'Предмет', B.grade_value AS 'Моя отметка', AVG(A.grade_value) AS 'Средний балл в группе', A.typeOfCertification_name AS 'Вид аттестации', A.semester_number AS 'Семестр' FROM (SELECT Subjects.subject_name, ROUND(AVG(CASE WHEN ISNUMERIC(Grades.grade_value) = 1 THEN CAST(Grades.grade_value AS decimal) END), 1) AS grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = 1 GROUP BY Subjects.subject_name, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number) AS A LEFT JOIN (SELECT Subjects.subject_name, Grades.grade_value FROM Subjects INNER JOIN Performance ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = 1 AND Students.student_id = 1 GROUP BY Subjects.subject_name, Grades.grade_value, Students.student_name) AS B ON A.subject_name = B.subject_name GROUP BY A.subject_name, A.typeOfCertification_name, A.semester_number, B.grade_value";
             SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, sqlConnection);
             SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
 
@@ -189,6 +200,58 @@ namespace StudentRating.Forms
                 ReadSingleRow(dataGridView, readerGetPerformance); // !выводим успеваемость в DataGridView!
             }
             readerGetPerformance.Close();
+
+            // ******************************************************
+
+            // -- переменные -- //
+            List<string> listNumericOrStringGrades1 = new List<string>(); // список отметок в изначальном строковом формате
+            List<float> listNumericGrades1 = new List<float>(); // список числовых отметок
+            int countNumericGrade1 = 0;
+            float studentGPA1 = 0; // средний балл отметок студентов
+
+            // -- получаем все отметки студентов ПО ПРЕДМЕТУ В DATAGRIDVIEW -- //  !нужны отметки из группы студента, зашедшего в систему          
+            string queryStringGetStudentGrades1 = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id WHERE Groups.group_id = '{groupId}' AND Subjects.subject_id = 4";
+            //string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id";
+            SqlCommand sqlCommandGetStudentGrades1 = new SqlCommand(queryStringGetStudentGrades1, sqlConnection);
+            SqlDataReader readerGetStudentGrades1 = sqlCommandGetStudentGrades1.ExecuteReader();
+            int ordinalNumber1 = readerGetStudentGrades1.GetOrdinal("grade_value"); // получаем порядковый номер столбца Grades.grade_value
+            while (readerGetStudentGrades1.Read())
+            {
+                //////////////labelStudentGrades.Text = "";
+                // добавляем в список всех оценок все отметки, полученные от sql-запроса
+                listNumericOrStringGrades1.Add(readerGetStudentGrades1.GetString(ordinalNumber1));
+                // выводим все отметки в лейбл для всех отметок
+                for (int i = 0; i < listNumericOrStringGrades1.Count(); i++)
+                {
+
+                    labelStudentGrades.Text += " " + listNumericOrStringGrades1[i];
+                }
+            }
+            readerGetStudentGrades1.Close();
+
+            // -- выводим отметки в лейбл для числовых и в лейбл для строковых отметок -- //            
+            for (int i = 0; i < listNumericOrStringGrades1.Count(); i++) // проходимся по всем отметкам в списке
+            {
+                int numericGrade; // конвертированная в численный тип отметка
+                bool isNumber = int.TryParse(listNumericOrStringGrades1[i], out numericGrade);
+                if (isNumber) // если отметка числовая, то выводим ее в соответствующий лейбл
+                {
+                    labelNumericGrades.Text += " " + numericGrade.ToString();
+                    listNumericGrades1.Add(numericGrade);
+                    countNumericGrade1++;
+                }
+                else // иначе выводим в лейбл для строковых отметок
+                {
+                    labelStringGrades.Text += " " + listNumericOrStringGrades1[i];
+
+                }
+            }
+            // высчитываем средний балл всех студентов по всем предметам
+            // (! нужно высчитывать средний балл отдельно для каждого предмета!)
+            studentGPA1 = (float)Math.Round(listNumericGrades1.Sum() / listNumericGrades1.Count(), 1);
+            labelStudentGPA.Text += " " + studentGPA1.ToString(); // выводим средний балл в соответствуюищй лейбл
+
+            // ********************************************************
 
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
