@@ -29,7 +29,8 @@ namespace StudentRating
 
         private void FormRatingJournal_Load(object sender, EventArgs e)
         {
-            buttonAllSubjectsAllSemesters.PerformClick();
+            //buttonAllSubjectsAllSemesters.PerformClick();
+            buttonCertainSemester.PerformClick();
         }
 
         private void CollapseMenu()
@@ -136,7 +137,7 @@ namespace StudentRating
         // событие клика на кнопку "Журнал рейтинга за определенный семестр"
         private void buttonCertainSemester_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCertainSemester(), sender);
+            OpenChildForm(new FormCertainSemester(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }
 
         // событие клика на кнопку "Журнал рейтинга по определенному предмету"
