@@ -1,13 +1,9 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentRating.Forms
@@ -87,7 +83,7 @@ namespace StudentRating.Forms
 
             List<string> listNumericOrStringGrades = new List<string>(); // список отметок в изначальном строковом формате
             List<float> listNumericGrades = new List<float>(); // список числовых отметок
-            float studentsGPA = 0; // средний балл отметок студентов
+            float studentsGPA = -1; // средний балл отметок студентов
             string groupName = ""; // название группы студента, зашедшего в систему
 
             // -- получаем все отметки студентОВ из группы студента, зашедшего в систему          
@@ -111,9 +107,11 @@ namespace StudentRating.Forms
                     listNumericGrades.Add(numericGrade);
                 }
             }
-            // высчитываем средний балл всех студентов группы по всем предметам за все семестры
-            studentsGPA = (float)Math.Round(listNumericGrades.Sum() / listNumericGrades.Count(), 1);
-
+            if (listNumericGrades.Count != 0)
+            {
+                // высчитываем средний балл всех студентов группы по всем предметам за все семестры
+                studentsGPA = (float)Math.Round(listNumericGrades.Sum() / listNumericGrades.Count(), 1);
+            }
             // получаем название группы студента, вошедшего в систему
             string queryStringGetGroupName = $"SELECT Groups.group_name FROM Groups WHERE Groups.group_id = '{groupId}'";
             SqlCommand sqlCommandGetGroupName = new SqlCommand(queryStringGetGroupName, dataBaseConnection.GetConnection());
@@ -123,19 +121,18 @@ namespace StudentRating.Forms
                 groupName = readerGetGroupName.GetString(0);
             }
             readerGetGroupName.Close();
-            if (studentsGPA == float.NaN)
-            {
-                labelStudentsGPAValue.Text += "-";
-            }
-            else
+            if (studentsGPA != -1)
             {
                 labelStudentsGPAValue.Text += groupName + ":  " + studentsGPA.ToString();
             }
-
+            else
+            {
+                labelStudentsGPAValue.Text += groupName + ":  -";
+            }
 
             List<string> listNumericOrStringGradesForOneStudent = new List<string>(); // список отметок в изначальном строковом формате
             List<float> listNumericGradesForOneStudent = new List<float>(); // список числовых отметок
-            float studentGPA = 0; // средний балл отметок студентов
+            float studentGPA = -1; // средний балл отметок студентов
 
             // -- получаем все отметки студентА, зашедшего в систему          
             string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Students.student_id = '{studentId}' AND Semesters.semester_number = '{semesterNumber}'";
@@ -158,9 +155,19 @@ namespace StudentRating.Forms
                     listNumericGradesForOneStudent.Add(numericGrade);
                 }
             }
-            // высчитываем средний балл всех студентов группы по всем предметам за все семестры
-            studentGPA = (float)Math.Round(listNumericGradesForOneStudent.Sum() / listNumericGradesForOneStudent.Count(), 1);
-            labelStudentGPAValue.Text += studentGPA.ToString(); // выводим средний балл в соответствующий лейбл
+            if (listNumericGradesForOneStudent.Count != 0)
+            {
+                // высчитываем средний балл всех студентов группы по всем предметам за все семестры
+                studentGPA = (float)Math.Round(listNumericGradesForOneStudent.Sum() / listNumericGradesForOneStudent.Count(), 1);
+            }
+            if (studentGPA != -1)
+            {
+                labelStudentGPAValue.Text += studentGPA.ToString(); // выводим средний балл в соответствующий лейбл
+            }
+            else
+            {
+                labelStudentGPAValue.Text += "-";
+            }            
         }
     }
 }

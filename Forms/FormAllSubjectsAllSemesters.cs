@@ -79,7 +79,7 @@ namespace StudentRating.Forms
             string groupName = ""; // название группы студента, зашедшего в систему
 
             // -- получаем все отметки студентОВ из группы студента, зашедшего в систему          
-            string queryStringGetStudentsGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}' AND Semesters.semester_number = ";
+            string queryStringGetStudentsGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}'";
             SqlCommand sqlCommandGetStudentsGrades = new SqlCommand(queryStringGetStudentsGrades, dataBaseConnection.GetConnection());
             SqlDataReader readerGetStudentsGrades = sqlCommandGetStudentsGrades.ExecuteReader();
             while (readerGetStudentsGrades.Read())
