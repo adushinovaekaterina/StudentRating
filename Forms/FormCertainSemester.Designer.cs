@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxCertainSemester = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelChooseSemester = new System.Windows.Forms.Label();
             this.dataGridViewCertainSemester = new System.Windows.Forms.DataGridView();
             this.labelStudentGPA = new System.Windows.Forms.Label();
             this.labelStudentsGPA = new System.Windows.Forms.Label();
@@ -53,22 +53,22 @@
             "6",
             "7",
             "8"});
-            this.comboBoxCertainSemester.Location = new System.Drawing.Point(247, 94);
+            this.comboBoxCertainSemester.Location = new System.Drawing.Point(241, 94);
             this.comboBoxCertainSemester.Margin = new System.Windows.Forms.Padding(5);
             this.comboBoxCertainSemester.Name = "comboBoxCertainSemester";
-            this.comboBoxCertainSemester.Size = new System.Drawing.Size(200, 34);
+            this.comboBoxCertainSemester.Size = new System.Drawing.Size(151, 34);
             this.comboBoxCertainSemester.TabIndex = 0;
             this.comboBoxCertainSemester.SelectedIndexChanged += new System.EventHandler(this.comboBoxCertainSemester_SelectedIndexChanged);
             // 
-            // label1
+            // labelChooseSemester
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(36, 97);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Выберите семестр:";
+            this.labelChooseSemester.AutoSize = true;
+            this.labelChooseSemester.ForeColor = System.Drawing.Color.Black;
+            this.labelChooseSemester.Location = new System.Drawing.Point(36, 97);
+            this.labelChooseSemester.Name = "labelChooseSemester";
+            this.labelChooseSemester.Size = new System.Drawing.Size(227, 26);
+            this.labelChooseSemester.TabIndex = 1;
+            this.labelChooseSemester.Text = "Выберите семестр:";
             // 
             // dataGridViewCertainSemester
             // 
@@ -80,23 +80,23 @@
             this.dataGridViewCertainSemester.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewCertainSemester.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewCertainSemester.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle43.BackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCertainSemester.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCertainSemester.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCertainSemester.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCertainSemester.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCertainSemester.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCertainSemester.Location = new System.Drawing.Point(41, 188);
             this.dataGridViewCertainSemester.Name = "dataGridViewCertainSemester";
             this.dataGridViewCertainSemester.ReadOnly = true;
@@ -152,7 +152,7 @@
             this.Controls.Add(this.labelStudentGPA);
             this.Controls.Add(this.labelStudentsGPA);
             this.Controls.Add(this.dataGridViewCertainSemester);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelChooseSemester);
             this.Controls.Add(this.comboBoxCertainSemester);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -168,7 +168,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxCertainSemester;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelChooseSemester;
         public System.Windows.Forms.DataGridView dataGridViewCertainSemester;
         private System.Windows.Forms.Label labelStudentGPA;
         private System.Windows.Forms.Label labelStudentsGPA;

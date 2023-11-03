@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.labelNameStudent = new System.Windows.Forms.Label();
+            this.labelFIOStudent = new System.Windows.Forms.Label();
             this.labelTitleBar = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
@@ -56,7 +56,7 @@
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(333, 897);
             this.panelMenu.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.buttonExit.Image = global::StudentRating.Properties.Resources.exit_svgrepo_com;
             this.buttonExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonExit.Location = new System.Drawing.Point(0, 786);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.buttonExit.Size = new System.Drawing.Size(333, 111);
@@ -94,7 +94,7 @@
             this.buttonCertainSubject.Image = global::StudentRating.Properties.Resources.open_book_svgrepo_com__7_;
             this.buttonCertainSubject.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCertainSubject.Location = new System.Drawing.Point(0, 357);
-            this.buttonCertainSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCertainSubject.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCertainSubject.Name = "buttonCertainSubject";
             this.buttonCertainSubject.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.buttonCertainSubject.Size = new System.Drawing.Size(333, 111);
@@ -116,7 +116,7 @@
             this.buttonCertainSemester.Image = global::StudentRating.Properties.Resources.academic_calendar_svgrepo_com__3___1_;
             this.buttonCertainSemester.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCertainSemester.Location = new System.Drawing.Point(0, 246);
-            this.buttonCertainSemester.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCertainSemester.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCertainSemester.Name = "buttonCertainSemester";
             this.buttonCertainSemester.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.buttonCertainSemester.Size = new System.Drawing.Size(333, 111);
@@ -138,7 +138,7 @@
             this.buttonAllSubjectsAllSemesters.Image = global::StudentRating.Properties.Resources.books_svgrepo_com__11_;
             this.buttonAllSubjectsAllSemesters.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAllSubjectsAllSemesters.Location = new System.Drawing.Point(0, 135);
-            this.buttonAllSubjectsAllSemesters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAllSubjectsAllSemesters.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAllSubjectsAllSemesters.Name = "buttonAllSubjectsAllSemesters";
             this.buttonAllSubjectsAllSemesters.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.buttonAllSubjectsAllSemesters.Size = new System.Drawing.Size(333, 111);
@@ -156,7 +156,7 @@
             this.panelLogo.Controls.Add(this.buttonMenu);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(333, 135);
             this.panelLogo.TabIndex = 0;
@@ -178,7 +178,7 @@
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenu.Image = global::StudentRating.Properties.Resources.menu_svgrepo_com__4_;
             this.buttonMenu.Location = new System.Drawing.Point(0, 0);
-            this.buttonMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonMenu.Margin = new System.Windows.Forms.Padding(4);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(133, 135);
             this.buttonMenu.TabIndex = 0;
@@ -188,29 +188,29 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.White;
-            this.panelTitleBar.Controls.Add(this.labelNameStudent);
+            this.panelTitleBar.Controls.Add(this.labelFIOStudent);
             this.panelTitleBar.Controls.Add(this.labelTitleBar);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(333, 0);
-            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(1467, 86);
             this.panelTitleBar.TabIndex = 2;
             // 
-            // labelNameStudent
+            // labelFIOStudent
             // 
-            this.labelNameStudent.BackColor = System.Drawing.Color.Transparent;
-            this.labelNameStudent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelNameStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNameStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
-            this.labelNameStudent.Location = new System.Drawing.Point(980, 0);
-            this.labelNameStudent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelNameStudent.Name = "labelNameStudent";
-            this.labelNameStudent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
-            this.labelNameStudent.Size = new System.Drawing.Size(483, 86);
-            this.labelNameStudent.TabIndex = 7;
-            this.labelNameStudent.Text = "Имя студента";
-            this.labelNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelFIOStudent.BackColor = System.Drawing.Color.Transparent;
+            this.labelFIOStudent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelFIOStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFIOStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.labelFIOStudent.Location = new System.Drawing.Point(980, 0);
+            this.labelFIOStudent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFIOStudent.Name = "labelFIOStudent";
+            this.labelFIOStudent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.labelFIOStudent.Size = new System.Drawing.Size(483, 86);
+            this.labelFIOStudent.TabIndex = 7;
+            this.labelFIOStudent.Text = "Имя студента";
+            this.labelFIOStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelTitleBar
             // 
@@ -232,7 +232,7 @@
             this.panelDesktopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPanel.Location = new System.Drawing.Point(333, 0);
-            this.panelDesktopPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelDesktopPanel.Margin = new System.Windows.Forms.Padding(4);
             this.panelDesktopPanel.Name = "panelDesktopPanel";
             this.panelDesktopPanel.Size = new System.Drawing.Size(1467, 897);
             this.panelDesktopPanel.TabIndex = 3;
@@ -247,7 +247,7 @@
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1274, 456);
             this.Name = "FormRatingJournal";
             this.Text = "Журнал рейтинга студентов";
@@ -273,6 +273,6 @@
         private System.Windows.Forms.Panel panelDesktopPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonExit;
-        public System.Windows.Forms.Label labelNameStudent;
+        public System.Windows.Forms.Label labelFIOStudent;
     }
 }

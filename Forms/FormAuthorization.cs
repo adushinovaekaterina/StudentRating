@@ -97,7 +97,7 @@ namespace StudentRating
                     while (reader.Read())
                     {
                         String FIOstudent = reader.GetString(0);
-                        formRatingJournal.labelNameStudent.Text = FIOstudent;
+                        formRatingJournal.labelFIOStudent.Text = FIOstudent;
                     }
                     reader.Close();
                     this.Hide();
