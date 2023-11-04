@@ -24,17 +24,21 @@ namespace StudentRating.Forms
         {
             dataBaseConnection.OpenConnection();
 
-            CreateColumns();
-            RefreshDataGridView(dataGridViewCertainSemester);
-            dataGridViewCertainSemester.ClearSelection(); // убираем выделение первой левой ячейки
+            CreateColumns();            
             comboBoxCertainSemester.Text = comboBoxCertainSemester.Items[0].ToString();
         }
         private void comboBoxCertainSemester_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {            
             dataGridViewCertainSemester.Rows.Clear();
             labelStudentGPAValue.Text = null;
             labelStudentsGPAValue.Text= null;
+            if (dataGridViewCertainSemester.Columns.Count == 5)
+            {
+                dataGridViewCertainSemester.Columns.RemoveAt(0);
+            }            
             RefreshDataGridView(dataGridViewCertainSemester);
+            dataGridViewCertainSemester.ClearSelection(); // убираем выделение первой левой ячейки
+            SetDataGridViewHeight(dataGridViewCertainSemester);            
         }
         // создание столбцов в DataGridView
         private void CreateColumns()
@@ -167,7 +171,33 @@ namespace StudentRating.Forms
             else
             {
                 labelStudentGPAValue.Text += "-";
-            }            
+            }
+            dataGridViewCertainSemester.Columns.Insert(0, new DataGridViewTextBoxColumn()
+            {
+                Name = "Number",
+                HeaderText = "Номер строки"
+            });
+            for (int i = 0; i < dataGridViewCertainSemester.Rows.Count; i++)
+            {
+                dataGridViewCertainSemester.Rows[i].Cells["Number"].Value = i + 1;
+                dataGridViewCertainSemester.Columns[0].Width = 100;
+            }
+        }
+        private void SetDataGridViewHeight(DataGridView dataGridView)
+        {
+            int totalHeight = 0;
+
+            // Суммируем высоту каждой строки
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                totalHeight += row.Height;
+            }
+
+            // Добавляем высоту заголовка DataGridView
+            totalHeight += dataGridView.ColumnHeadersHeight;
+
+            // Устанавливаем высоту DataGridView
+            dataGridView.Height = totalHeight;
         }
     }
 }

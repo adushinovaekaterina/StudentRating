@@ -1,7 +1,6 @@
 ﻿using StudentRating.Forms;
 using System;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace StudentRating
@@ -9,8 +8,6 @@ namespace StudentRating
     public partial class FormRatingJournal : Form
     {
         private Button currentButton; // текущая кнопка
-        private Random random; // рандом
-        private int tempIndex; // временный индекс
         private Form activeForm; // активная форма
 
         public int studentIdFromRatingJournal;
@@ -20,59 +17,13 @@ namespace StudentRating
         public FormRatingJournal(int studentIdFromRatingJournal, int groupIdFromRatingJournal)
         {
             InitializeComponent();
-
-            random = new Random();
-
             this.studentIdFromRatingJournal = studentIdFromRatingJournal;
             this.groupIdFromRatingJournal = groupIdFromRatingJournal;
         }
-
         private void FormRatingJournal_Load(object sender, EventArgs e)
         {
-            //buttonAllSubjectsAllSemesters.PerformClick();
-            //buttonCertainSemester.PerformClick();
-            buttonCertainSubject.PerformClick();
+            buttonAllSubjectsAllSemesters.PerformClick();
         }
-
-        private void CollapseMenu()
-        {
-            // скрыть меню
-            if (this.panelMenu.Width > 200) 
-            {
-                panelMenu.Width = 100;
-                // Controls возвращает коллекцию элементов управления, содержащихся в элементе управления
-                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                {
-                    menuButton.Text = "";
-                    menuButton.ImageAlign = ContentAlignment.MiddleCenter;
-                    menuButton.Padding = new Padding(0);
-                }
-            }
-            // развернуть меню
-            else
-            { 
-                panelMenu.Width = 250;
-                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                {
-                    menuButton.Text = "   " + menuButton.Tag.ToString();
-                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
-                    menuButton.Padding = new Padding(10, 0, 0, 0);
-                }
-            }
-        }
-
-        private Color SelectThemeColor()
-        {
-            int index = random.Next(ThemeColor.ColorList.Count);
-            while (tempIndex == index)
-            {
-                index = random.Next(ThemeColor.ColorList.Count);
-            }
-            tempIndex = index;
-            string color = ThemeColor.ColorList[index];
-            return ColorTranslator.FromHtml(color);
-        }
-
         private void ActivateButton(object btnSender)
         {
             if (btnSender != null)
@@ -80,18 +31,17 @@ namespace StudentRating
                 if (currentButton != (Button)btnSender)
                 {
                     DisableButton();
-                    Color color = SelectThemeColor();
+                    int red = Convert.ToInt32(63);
+                    int green = Convert.ToInt32(81);
+                    int blue = Convert.ToInt32(181);
+                    Color color = Color.FromArgb(red, green, blue);
                     currentButton = (Button)btnSender;
                     currentButton.BackColor = color;
                     currentButton.ForeColor = Color.White;
                     currentButton.Font = new Font("Microsoft Sans Serif", 10.5F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
-                    //panelTitleBar.BackColor = color;
-                    ThemeColor.PrimaryColor = color;
-                    ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                 }
             }
         }
-
         private void DisableButton()
         {
             foreach (Control previousBtn in panelMenu.Controls)
@@ -104,7 +54,6 @@ namespace StudentRating
                 }
             }
         }
-
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
@@ -114,17 +63,11 @@ namespace StudentRating
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            this.panelDesktopPanel.Controls.Add(childForm);
-            this.panelDesktopPanel.Tag = childForm;
+            panelDesktopPanel.Controls.Add(childForm);
+            panelDesktopPanel.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
             labelTitleBar.Text = childForm.Text;
-        }
-
-        // событие клика на кнопку "Гамбургер-меню"
-        private void buttonMenu_Click(object sender, EventArgs e)
-        {
-            CollapseMenu();
         }
 
         // событие клика на кнопку "Журнал рейтинга за все семестры по всем предметам"
@@ -153,9 +96,9 @@ namespace StudentRating
             if (result == DialogResult.Yes)
             {
                 FormAuthorization formAuthorization = new FormAuthorization();
-                this.Hide();
+                Hide();
                 formAuthorization.ShowDialog();
-                this.Close();
+                Close();
             }
         }
     }

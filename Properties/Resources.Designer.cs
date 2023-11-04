@@ -303,6 +303,26 @@ namespace StudentRating.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap certificated_toga_diploma_university_school_graduated_icon_2093101 {
+            get {
+                object obj = ResourceManager.GetObject("certificated_toga_diploma_university_school_graduated_icon_2093101", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap certificated_toga_diploma_university_school_graduated_icon_2093102 {
+            get {
+                object obj = ResourceManager.GetObject("certificated_toga_diploma_university_school_graduated_icon_2093102", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_svgrepo_com {
             get {
                 object obj = ResourceManager.GetObject("close-svgrepo-com", resourceCulture);

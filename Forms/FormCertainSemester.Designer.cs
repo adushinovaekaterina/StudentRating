@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxCertainSemester = new System.Windows.Forms.ComboBox();
             this.labelChooseSemester = new System.Windows.Forms.Label();
             this.dataGridViewCertainSemester = new System.Windows.Forms.DataGridView();
@@ -78,12 +79,11 @@
             this.dataGridViewCertainSemester.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewCertainSemester.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewCertainSemester.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewCertainSemester.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridViewCertainSemester.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewCertainSemester.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.CadetBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -97,10 +97,19 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewCertainSemester.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewCertainSemester.EnableHeadersVisualStyles = false;
+            this.dataGridViewCertainSemester.GridColor = System.Drawing.Color.CadetBlue;
             this.dataGridViewCertainSemester.Location = new System.Drawing.Point(41, 188);
             this.dataGridViewCertainSemester.Name = "dataGridViewCertainSemester";
             this.dataGridViewCertainSemester.ReadOnly = true;
+            this.dataGridViewCertainSemester.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridViewCertainSemester.RowHeadersVisible = false;
             this.dataGridViewCertainSemester.RowHeadersWidth = 56;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCertainSemester.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCertainSemester.Size = new System.Drawing.Size(1093, 665);
             this.dataGridViewCertainSemester.TabIndex = 2;
             // 

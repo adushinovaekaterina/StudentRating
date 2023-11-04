@@ -1,13 +1,10 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentRating.Forms
@@ -28,12 +25,10 @@ namespace StudentRating.Forms
         {
             dataBaseConnection.OpenConnection();
 
-            CreateColumns();
-            RefreshDataGridView(dataGridViewCertainSemester);
-            dataGridViewCertainSemester.ClearSelection(); // убираем выделение первой левой ячейки
+            CreateColumns();            
 
             // -- получаем список предметов для вывода в comboBoxCertainSubject
-            string queryStringGetSubjectsName = $"SELECT subject_name FROM Subjects";
+            string queryStringGetSubjectsName = "SELECT subject_name FROM Subjects";
             SqlCommand sqlCommandGetSubjectsName = new SqlCommand(queryStringGetSubjectsName, dataBaseConnection.GetConnection());
             SqlDataReader readerGetSubjectsName = sqlCommandGetSubjectsName.ExecuteReader();
             while (readerGetSubjectsName.Read())
@@ -46,7 +41,7 @@ namespace StudentRating.Forms
         // ПРЕДМЕТЫ
         private void comboBoxCertainSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewCertainSemester.Rows.Clear();
+            dataGridViewCertainSubject.Rows.Clear();
             labelStudentsGPAValue.Text = null;
             comboBoxCertainSemester.Items.Clear();
 
@@ -69,18 +64,23 @@ namespace StudentRating.Forms
         // СЕМЕСТРЫ
         private void comboBoxCertainSemester_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewCertainSemester.Rows.Clear();
+            dataGridViewCertainSubject.Rows.Clear();
             labelStudentsGPAValue.Text = null;
-            RefreshDataGridView(dataGridViewCertainSemester);
+            if (dataGridViewCertainSubject.Columns.Count == 4)
+            {
+                dataGridViewCertainSubject.Columns.RemoveAt(0);
+            }
+            RefreshDataGridView(dataGridViewCertainSubject);
+            dataGridViewCertainSubject.ClearSelection(); // убираем выделение первой левой ячейки
+            SetDataGridViewHeight(dataGridViewCertainSubject);
         }
         // создание столбцов в DataGridView
         private void CreateColumns()
         {
-            dataGridViewCertainSemester.Columns.Add("student_FIO", "Студент");
-            dataGridViewCertainSemester.Columns.Add("grade_value", "Оценка");
-            dataGridViewCertainSemester.Columns.Add("typeOfCertification_name", "Вид аттестации");
+            dataGridViewCertainSubject.Columns.Add("student_FIO", "Студент");
+            dataGridViewCertainSubject.Columns.Add("grade_value", "Оценка");
+            dataGridViewCertainSubject.Columns.Add("typeOfCertification_name", "Вид аттестации");
         }
-
         // заполнение DataGridView
         private void ReadSingleRow(DataGridView dataGridView, IDataRecord record)
         {
@@ -96,9 +96,8 @@ namespace StudentRating.Forms
             {
                 int semesterNumber = int.Parse(comboBoxCertainSemester.SelectedItem.ToString());
 
-
                 // -- получаем успеваемость для студента, вошедшего в систему -- // 
-                string queryStringGetPerformanceByStudentId = $"SELECT CASE WHEN Students.student_id = '{studentId}' THEN CONCAT(Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) ELSE '-' END AS 'Студент', Grades.grade_value AS 'Оценка', Types_Of_Certification.typeOfCertification_name AS 'Вид аттестации' FROM Performance INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Subjects.subject_name = N'{comboBoxCertainSubject.Text}' AND Semesters.semester_number = '{semesterNumber}' ORDER BY CASE WHEN Students.student_id = 1 THEN 1 ELSE 2 END";
+                string queryStringGetPerformanceByStudentId = $"SELECT CASE WHEN Students.student_id = '{studentId}' THEN CONCAT(Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) ELSE '-' END AS 'Студент', Grades.grade_value AS 'Оценка', Types_Of_Certification.typeOfCertification_name AS 'Вид аттестации' FROM Performance LEFT JOIN Students ON Performance.student_id = Students.student_id LEFT JOIN Grades ON Performance.grade_id = Grades.grade_id LEFT JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id LEFT JOIN Subjects ON Performance.subject_id = Subjects.subject_id LEFT JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Subjects.subject_name = N'{comboBoxCertainSubject.Text}' AND Semesters.semester_number = '{semesterNumber}' ORDER BY CASE WHEN Grades.grade_value = N'зачтено' THEN 1 WHEN Grades.grade_value = '5' THEN 2 WHEN Grades.grade_value = '4' THEN 3 WHEN Grades.grade_value = '3' THEN 4 WHEN Grades.grade_value = N'не зачтено' THEN 5 END";
                 SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, dataBaseConnection.GetConnection());
                 SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
 
@@ -156,17 +155,52 @@ namespace StudentRating.Forms
                 {
                     labelStudentsGPAValue.Text += groupName + ":  -";
                 }
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "-")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightSteelBlue;
+                    }                    
+                }
+                for (int rowIndex = 0; rowIndex < dataGridViewCertainSubject.Rows.Count; rowIndex++)
+                {
+                    var row = dataGridViewCertainSubject.Rows[rowIndex];
 
-
-                //comboBoxCertainSemester.Text = comboBoxCertainSubject.Items[0].ToString();
+                    for (int columnIndex = 0; columnIndex < row.Cells.Count; columnIndex++)
+                    {
+                        if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() == "не зачтено")
+                        {
+                            row.Cells[columnIndex].Style.ForeColor = Color.Red;
+                        }
+                    }
+                }
+            }
+            dataGridViewCertainSubject.Columns.Insert(0, new DataGridViewTextBoxColumn()
+            {
+                Name = "Number",
+                HeaderText = "Номер строки"
+            });
+            for (int i = 0; i < dataGridViewCertainSubject.Rows.Count; i++)
+            {
+                dataGridViewCertainSubject.Rows[i].Cells["Number"].Value = i + 1;
+                dataGridViewCertainSubject.Columns[0].Width = 100;
             }
         }
-
-        private void labelStudentsGPA_Click(object sender, EventArgs e)
+        private void SetDataGridViewHeight(DataGridView dataGridView)
         {
+            int totalHeight = 0;
 
+            // Суммируем высоту каждой строки
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                totalHeight += row.Height;
+            }
+
+            // Добавляем высоту заголовка DataGridView
+            totalHeight += dataGridView.ColumnHeadersHeight;
+
+            // Устанавливаем высоту DataGridView
+            dataGridView.Height = totalHeight;
         }
-
-       
     }
 }

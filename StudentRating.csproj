@@ -102,7 +102,6 @@
     <Compile Include="Forms\FormRatingJournal.Designer.cs">
       <DependentUpon>FormRatingJournal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThemeColor.cs" />
     <EmbeddedResource Include="Forms\FormAuthorization.resx">
       <DependentUpon>FormAuthorization.cs</DependentUpon>
     </EmbeddedResource>
