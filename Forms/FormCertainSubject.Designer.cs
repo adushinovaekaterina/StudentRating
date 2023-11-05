@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelChooseSubject = new System.Windows.Forms.Label();
             this.comboBoxCertainSubject = new System.Windows.Forms.ComboBox();
             this.dataGridViewCertainSubject = new System.Windows.Forms.DataGridView();
@@ -38,6 +38,8 @@
             this.labelStudentsGPA = new System.Windows.Forms.Label();
             this.comboBoxCertainSemester = new System.Windows.Forms.ComboBox();
             this.labelChooseSemester = new System.Windows.Forms.Label();
+            this.labelTypeOfCertification = new System.Windows.Forms.Label();
+            this.labelTypeOfCertificationValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertainSubject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,23 +77,23 @@
             this.dataGridViewCertainSubject.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewCertainSubject.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewCertainSubject.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCertainSubject.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCertainSubject.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewCertainSubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCertainSubject.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCertainSubject.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewCertainSubject.EnableHeadersVisualStyles = false;
             this.dataGridViewCertainSubject.GridColor = System.Drawing.Color.CadetBlue;
             this.dataGridViewCertainSubject.Location = new System.Drawing.Point(41, 188);
@@ -101,11 +103,11 @@
             this.dataGridViewCertainSubject.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridViewCertainSubject.RowHeadersVisible = false;
             this.dataGridViewCertainSubject.RowHeadersWidth = 56;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewCertainSubject.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCertainSubject.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewCertainSubject.Size = new System.Drawing.Size(1093, 665);
             this.dataGridViewCertainSubject.TabIndex = 12;
             // 
@@ -155,11 +157,34 @@
             this.labelChooseSemester.TabIndex = 16;
             this.labelChooseSemester.Text = "Выберите семестр:";
             // 
+            // labelTypeOfCertification
+            // 
+            this.labelTypeOfCertification.AutoSize = true;
+            this.labelTypeOfCertification.ForeColor = System.Drawing.Color.Black;
+            this.labelTypeOfCertification.Location = new System.Drawing.Point(777, 149);
+            this.labelTypeOfCertification.Name = "labelTypeOfCertification";
+            this.labelTypeOfCertification.Size = new System.Drawing.Size(200, 26);
+            this.labelTypeOfCertification.TabIndex = 17;
+            this.labelTypeOfCertification.Text = "Вид аттестации: ";
+            // 
+            // labelTypeOfCertificationValue
+            // 
+            this.labelTypeOfCertificationValue.BackColor = System.Drawing.Color.Transparent;
+            this.labelTypeOfCertificationValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.labelTypeOfCertificationValue.ForeColor = System.Drawing.Color.Black;
+            this.labelTypeOfCertificationValue.Location = new System.Drawing.Point(925, 149);
+            this.labelTypeOfCertificationValue.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelTypeOfCertificationValue.Name = "labelTypeOfCertificationValue";
+            this.labelTypeOfCertificationValue.Size = new System.Drawing.Size(209, 27);
+            this.labelTypeOfCertificationValue.TabIndex = 18;
+            // 
             // FormCertainSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 701);
+            this.Controls.Add(this.labelTypeOfCertificationValue);
+            this.Controls.Add(this.labelTypeOfCertification);
             this.Controls.Add(this.labelChooseSemester);
             this.Controls.Add(this.comboBoxCertainSemester);
             this.Controls.Add(this.labelStudentsGPAValue);
@@ -187,5 +212,7 @@
         private System.Windows.Forms.Label labelStudentsGPA;
         private System.Windows.Forms.ComboBox comboBoxCertainSemester;
         private System.Windows.Forms.Label labelChooseSemester;
+        private System.Windows.Forms.Label labelTypeOfCertification;
+        private System.Windows.Forms.Label labelTypeOfCertificationValue;
     }
 }
