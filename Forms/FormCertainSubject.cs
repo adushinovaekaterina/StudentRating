@@ -1,6 +1,7 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -113,7 +114,7 @@ namespace StudentRating.Forms
                 string groupName = ""; // название группы студента, зашедшего в систему
 
                 // -- получаем все отметки студентОВ из группы студента, зашедшего в систему          
-                string queryStringGetStudentsGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Groups.group_id = '{groupId}' AND Semesters.semester_number = '{semesterNumber}'";
+                string queryStringGetStudentsGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id WHERE Groups.group_id = '{groupId}' AND Semesters.semester_number = '{semesterNumber}' AND Subjects.subject_name = N'{comboBoxCertainSubject.Text}'";
                 SqlCommand sqlCommandGetStudentsGrades = new SqlCommand(queryStringGetStudentsGrades, dataBaseConnection.GetConnection());
                 SqlDataReader readerGetStudentsGrades = sqlCommandGetStudentsGrades.ExecuteReader();
                 while (readerGetStudentsGrades.Read())
@@ -196,6 +197,19 @@ namespace StudentRating.Forms
             {
                 dataGridViewCertainSubject.Rows[i].Cells["Number"].Value = i + 1;
                 dataGridViewCertainSubject.Columns[0].Width = 100;
+            }
+            int columnInd = 2;
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells[columnInd].Value == null)
+                    continue;
+
+                string cellValue = row.Cells[columnInd].Value.ToString();
+
+                if (cellValue == "-" || cellValue == "3" || cellValue == "не зачтено")
+                {
+                    row.Cells[columnInd].Style.ForeColor = Color.Red;
+                }
             }
         }
         private void SetDataGridViewHeight(DataGridView dataGridView)

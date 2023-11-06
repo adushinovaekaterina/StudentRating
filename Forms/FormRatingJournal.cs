@@ -63,15 +63,14 @@ namespace StudentRating
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panelDesktopPanel.Controls.Add(childForm);
-            panelDesktopPanel.Tag = childForm;
+            panelWorkspace.Controls.Add(childForm);
             childForm.BringToFront();
             childForm.Show();
             labelTitleBar.Text = childForm.Text;
         }
 
         // событие клика на кнопку "Журнал рейтинга за все семестры по всем предметам"
-        private void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
+        public void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
         {
             FormAllSubjectsAllSemesters formAllSubjectsAllSemesters = new FormAllSubjectsAllSemesters(studentIdFromRatingJournal, groupIdFromRatingJournal);
             
@@ -79,13 +78,13 @@ namespace StudentRating
         }
 
         // событие клика на кнопку "Журнал рейтинга за определенный семестр"
-        private void buttonCertainSemester_Click(object sender, EventArgs e)
+        public void buttonCertainSemester_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormCertainSemester(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }
 
         // событие клика на кнопку "Журнал рейтинга по определенному предмету"
-        private void buttonCertainSubject_Click(object sender, EventArgs e)
+        public void buttonCertainSubject_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormCertainSubject(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }

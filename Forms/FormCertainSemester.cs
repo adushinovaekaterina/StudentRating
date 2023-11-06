@@ -1,8 +1,10 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -172,6 +174,7 @@ namespace StudentRating.Forms
             {
                 labelStudentGPAValue.Text += "-";
             }
+            dataGridViewCertainSemester.Sort(dataGridViewCertainSemester.Columns[1], ListSortDirection.Descending);
             dataGridViewCertainSemester.Columns.Insert(0, new DataGridViewTextBoxColumn()
             {
                 Name = "Number",
@@ -181,6 +184,38 @@ namespace StudentRating.Forms
             {
                 dataGridViewCertainSemester.Rows[i].Cells["Number"].Value = i + 1;
                 dataGridViewCertainSemester.Columns[0].Width = 100;
+            }
+            int columnIndex = 2;
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells[columnIndex].Value == null)
+                    continue;
+
+                string cellValue = row.Cells[columnIndex].Value.ToString();
+
+                if (cellValue == "-" || cellValue == "3" || cellValue == "не зачтено")
+                {
+                    row.Cells[columnIndex].Style.ForeColor = Color.Red;
+                }
+            }
+            columnIndex = 3;
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells[columnIndex].Value == null)
+                    continue;
+
+                string cellValue = row.Cells[columnIndex].Value.ToString();
+
+                bool isInRange = false;
+                if (decimal.TryParse(cellValue, out decimal value))
+                {
+                    if (value >= 3.0m && value <= 3.9m)
+                        isInRange = true;
+                }
+                if (isInRange)
+                {
+                    row.Cells[columnIndex].Style.ForeColor = Color.Red;
+                }
             }
         }
         private void SetDataGridViewHeight(DataGridView dataGridView)

@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRatingJournal));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.labelFIOStudent = new System.Windows.Forms.Label();
-            this.labelTitleBar = new System.Windows.Forms.Label();
-            this.panelDesktopPanel = new System.Windows.Forms.Panel();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonCertainSubject = new System.Windows.Forms.Button();
             this.buttonCertainSemester = new System.Windows.Forms.Button();
             this.buttonAllSubjectsAllSemesters = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.labelFIOStudent = new System.Windows.Forms.Label();
+            this.labelTitleBar = new System.Windows.Forms.Label();
+            this.panelWorkspace = new System.Windows.Forms.Panel();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.labelStudentRating = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
-            this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            this.panelLogo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -60,69 +60,6 @@
             this.panelMenu.Size = new System.Drawing.Size(333, 897);
             this.panelMenu.TabIndex = 1;
             // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
-            this.panelLogo.Controls.Add(this.label1);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(333, 135);
-            this.panelLogo.TabIndex = 0;
-            // 
-            // panelTitleBar
-            // 
-            this.panelTitleBar.BackColor = System.Drawing.Color.White;
-            this.panelTitleBar.Controls.Add(this.labelFIOStudent);
-            this.panelTitleBar.Controls.Add(this.labelTitleBar);
-            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(333, 0);
-            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1467, 86);
-            this.panelTitleBar.TabIndex = 2;
-            // 
-            // labelFIOStudent
-            // 
-            this.labelFIOStudent.BackColor = System.Drawing.Color.Transparent;
-            this.labelFIOStudent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelFIOStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFIOStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
-            this.labelFIOStudent.Location = new System.Drawing.Point(980, 0);
-            this.labelFIOStudent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelFIOStudent.Name = "labelFIOStudent";
-            this.labelFIOStudent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
-            this.labelFIOStudent.Size = new System.Drawing.Size(483, 86);
-            this.labelFIOStudent.TabIndex = 7;
-            this.labelFIOStudent.Text = "Имя студента";
-            this.labelFIOStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelTitleBar
-            // 
-            this.labelTitleBar.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitleBar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelTitleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTitleBar.ForeColor = System.Drawing.Color.Black;
-            this.labelTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.labelTitleBar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTitleBar.Name = "labelTitleBar";
-            this.labelTitleBar.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.labelTitleBar.Size = new System.Drawing.Size(980, 86);
-            this.labelTitleBar.TabIndex = 6;
-            this.labelTitleBar.Text = "ЖУРНАЛ РЕЙТИНГА СТУДЕНТОВ ПО ВСЕМ ПРЕДМЕТАМ ЗА ВСЕ СЕМЕСТРЫ";
-            this.labelTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panelDesktopPanel
-            // 
-            this.panelDesktopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPanel.Location = new System.Drawing.Point(333, 0);
-            this.panelDesktopPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.panelDesktopPanel.Name = "panelDesktopPanel";
-            this.panelDesktopPanel.Size = new System.Drawing.Size(1467, 897);
-            this.panelDesktopPanel.TabIndex = 3;
-            // 
             // buttonExit
             // 
             this.buttonExit.AutoSize = true;
@@ -139,8 +76,8 @@
             this.buttonExit.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.buttonExit.Size = new System.Drawing.Size(333, 111);
             this.buttonExit.TabIndex = 4;
-            this.buttonExit.Tag = "Выйти из личного кабинета";
-            this.buttonExit.Text = "Выйти из личного кабинета";
+            this.buttonExit.Tag = "Выйти из аккаунта";
+            this.buttonExit.Text = "Выйти из аккаунта";
             this.buttonExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
@@ -211,16 +148,79 @@
             this.buttonAllSubjectsAllSemesters.UseVisualStyleBackColor = true;
             this.buttonAllSubjectsAllSemesters.Click += new System.EventHandler(this.buttonAllSubjectsAllSemesters_Click);
             // 
-            // label1
+            // panelTitleBar
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.84615F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(45, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 97);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Рейтинг студентов";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelTitleBar.BackColor = System.Drawing.Color.White;
+            this.panelTitleBar.Controls.Add(this.labelFIOStudent);
+            this.panelTitleBar.Controls.Add(this.labelTitleBar);
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(333, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTitleBar.Name = "panelTitleBar";
+            this.panelTitleBar.Size = new System.Drawing.Size(1467, 86);
+            this.panelTitleBar.TabIndex = 2;
+            // 
+            // labelFIOStudent
+            // 
+            this.labelFIOStudent.BackColor = System.Drawing.Color.Transparent;
+            this.labelFIOStudent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelFIOStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFIOStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.labelFIOStudent.Location = new System.Drawing.Point(980, 0);
+            this.labelFIOStudent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFIOStudent.Name = "labelFIOStudent";
+            this.labelFIOStudent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.labelFIOStudent.Size = new System.Drawing.Size(483, 86);
+            this.labelFIOStudent.TabIndex = 7;
+            this.labelFIOStudent.Text = "ФИО студента";
+            this.labelFIOStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelTitleBar
+            // 
+            this.labelTitleBar.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitleBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelTitleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTitleBar.ForeColor = System.Drawing.Color.Black;
+            this.labelTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.labelTitleBar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitleBar.Name = "labelTitleBar";
+            this.labelTitleBar.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.labelTitleBar.Size = new System.Drawing.Size(980, 86);
+            this.labelTitleBar.TabIndex = 6;
+            this.labelTitleBar.Text = "ЖУРНАЛ РЕЙТИНГА";
+            this.labelTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panelWorkspace
+            // 
+            this.panelWorkspace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.panelWorkspace.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelWorkspace.Location = new System.Drawing.Point(333, 0);
+            this.panelWorkspace.Margin = new System.Windows.Forms.Padding(4);
+            this.panelWorkspace.Name = "panelWorkspace";
+            this.panelWorkspace.Size = new System.Drawing.Size(1467, 897);
+            this.panelWorkspace.TabIndex = 3;
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.panelLogo.Controls.Add(this.labelStudentRating);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(333, 135);
+            this.panelLogo.TabIndex = 0;
+            // 
+            // labelStudentRating
+            // 
+            this.labelStudentRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.84615F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelStudentRating.Location = new System.Drawing.Point(45, 19);
+            this.labelStudentRating.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStudentRating.Name = "labelStudentRating";
+            this.labelStudentRating.Size = new System.Drawing.Size(241, 97);
+            this.labelStudentRating.TabIndex = 1;
+            this.labelStudentRating.Text = "Рейтинг студентов";
+            this.labelStudentRating.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormRatingJournal
             // 
@@ -228,7 +228,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1800, 897);
             this.Controls.Add(this.panelTitleBar);
-            this.Controls.Add(this.panelDesktopPanel);
+            this.Controls.Add(this.panelWorkspace);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -240,23 +240,23 @@
             this.Load += new System.EventHandler(this.FormRatingJournal_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
-            this.panelLogo.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
+            this.panelLogo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Button buttonAllSubjectsAllSemesters;
         private System.Windows.Forms.Button buttonCertainSemester;
         private System.Windows.Forms.Button buttonCertainSubject;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label labelTitleBar;
-        private System.Windows.Forms.Panel panelDesktopPanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelWorkspace;
         private System.Windows.Forms.Button buttonExit;
         public System.Windows.Forms.Label labelFIOStudent;
+        private System.Windows.Forms.Panel panelLogo;
+        private System.Windows.Forms.Label labelStudentRating;
     }
 }
