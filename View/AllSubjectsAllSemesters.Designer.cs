@@ -1,6 +1,6 @@
 ﻿namespace StudentRating.Forms
 {
-    partial class FormAllSubjectsAllSemesters
+    partial class AllSubjectsAllSemesters
     {
         /// <summary>
         /// Required designer variable.

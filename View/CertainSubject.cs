@@ -1,7 +1,6 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -10,12 +9,12 @@ using System.Windows.Forms;
 
 namespace StudentRating.Forms
 {
-    public partial class FormCertainSubject : Form
+    public partial class CertainSubject : Form
     {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        DataBase dataBaseConnection = new DataBase();
         public int studentId;
         public int groupId;
-        public FormCertainSubject(int studentId, int groupId)
+        public CertainSubject(int studentId, int groupId)
         {
             InitializeComponent();
             this.studentId = studentId;
@@ -80,7 +79,7 @@ namespace StudentRating.Forms
         private void CreateColumns()
         {
             dataGridViewCertainSubject.Columns.Add("student_FIO", "Студент");
-            dataGridViewCertainSubject.Columns.Add("grade_value", "Оценка");
+            dataGridViewCertainSubject.Columns.Add("grade_value", "Отметка");
         }
         // заполнение DataGridView
         private void ReadSingleRow(DataGridView dataGridView, IDataRecord record)

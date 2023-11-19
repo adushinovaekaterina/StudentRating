@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace StudentRating
 {
-    public partial class FormRatingJournal : Form
+    public partial class RatingJournal : Form
     {
         private Button currentButton; // текущая кнопка
         private Form activeForm; // активная форма
@@ -14,7 +14,7 @@ namespace StudentRating
         public int groupIdFromRatingJournal;
 
         // конструктор формы Журнал рейтинга (родительская форма для остальных форм, связанных с журналом)
-        public FormRatingJournal(int studentIdFromRatingJournal, int groupIdFromRatingJournal)
+        public RatingJournal(int studentIdFromRatingJournal, int groupIdFromRatingJournal)
         {
             InitializeComponent();
             this.studentIdFromRatingJournal = studentIdFromRatingJournal;
@@ -72,7 +72,7 @@ namespace StudentRating
         // событие клика на кнопку "Журнал рейтинга за все семестры по всем предметам"
         public void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
         {
-            FormAllSubjectsAllSemesters formAllSubjectsAllSemesters = new FormAllSubjectsAllSemesters(studentIdFromRatingJournal, groupIdFromRatingJournal);
+            AllSubjectsAllSemesters formAllSubjectsAllSemesters = new AllSubjectsAllSemesters(studentIdFromRatingJournal, groupIdFromRatingJournal);
             
             OpenChildForm(formAllSubjectsAllSemesters, sender);
         }
@@ -80,13 +80,13 @@ namespace StudentRating
         // событие клика на кнопку "Журнал рейтинга за определенный семестр"
         public void buttonCertainSemester_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCertainSemester(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
+            OpenChildForm(new CertainSemester(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }
 
         // событие клика на кнопку "Журнал рейтинга по определенному предмету"
         public void buttonCertainSubject_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCertainSubject(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
+            OpenChildForm(new CertainSubject(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace StudentRating
             DialogResult result = MessageBox.Show("Вы уверены, что хотите выйти из личного кабинета?", "Подтверждение выхода", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                FormAuthorization formAuthorization = new FormAuthorization();
+                Authorization formAuthorization = new Authorization();
                 Hide();
                 formAuthorization.ShowDialog();
                 Close();

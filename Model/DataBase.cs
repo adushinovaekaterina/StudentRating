@@ -3,14 +3,14 @@ using System.Data.SqlClient;
 
 namespace StudentRating.Classes
 {
-    class DataBaseConnection
+    class DataBase
     {
         // поле для создания подключения к БД
         // благодаря классу SqlConnection происходят все операции с БД
         // через созданное открытое подключение
 
         // для того чтобы вытащить строку подключения из файла настроек нужно прописать это:
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringDatabaseStudentRating"].ConnectionString);
+        private SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringDatabaseStudentRating"].ConnectionString);
         // нужен класс ConfigurationManager и его свойство ConnectionStrings
         // (это словарь и по ключу мы можем получать значения
         // ключом является "ConnectionStringsDatabaseStudentRating")

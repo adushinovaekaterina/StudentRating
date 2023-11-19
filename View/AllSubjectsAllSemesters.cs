@@ -1,56 +1,50 @@
-﻿using StudentRating.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using StudentRating.Classes;
+using System.Drawing;
+using System.ComponentModel;
 
 namespace StudentRating.Forms
 {
-    public partial class FormCertainSemester : Form
+    public partial class AllSubjectsAllSemesters : Form
     {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        DataBase dataBaseConnection = new DataBase();
         public int studentId;
         public int groupId;
-        public FormCertainSemester(int studentId, int groupId)
+
+        public AllSubjectsAllSemesters(int studentId, int groupId)
         {
             InitializeComponent();
             this.studentId = studentId;
             this.groupId = groupId;
         }
-
-        private void FormCertainSemester_Load(object sender, EventArgs e)
+        private void FormAllSubjectsAllSemesters_Load(object sender, EventArgs e)
         {
             dataBaseConnection.OpenConnection();
 
-            CreateColumns();            
-            comboBoxCertainSemester.Text = comboBoxCertainSemester.Items[0].ToString();
-        }
-        private void comboBoxCertainSemester_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            dataGridViewCertainSemester.Rows.Clear();
-            labelStudentGPAValue.Text = null;
-            labelStudentsGPAValue.Text= null;
-            if (dataGridViewCertainSemester.Columns.Count == 5)
+            CreateColumns();
+            if (dataGridViewAllSubjectsAllSemesters.Columns.Count == 6)
             {
-                dataGridViewCertainSemester.Columns.RemoveAt(0);
-            }            
-            RefreshDataGridView(dataGridViewCertainSemester);
-            dataGridViewCertainSemester.ClearSelection(); // убираем выделение первой левой ячейки
-            SetDataGridViewHeight(dataGridViewCertainSemester);            
+                dataGridViewAllSubjectsAllSemesters.Columns.RemoveAt(0);
+            }
+            RefreshDataGridView(dataGridViewAllSubjectsAllSemesters);
+            dataGridViewAllSubjectsAllSemesters.ClearSelection(); // убираем выделение первой левой ячейки
+            SetDataGridViewHeight(dataGridViewAllSubjectsAllSemesters);
+
         }
         // создание столбцов в DataGridView
         private void CreateColumns()
         {
-            dataGridViewCertainSemester.Columns.Add("subject_name", "Предмет");
-            dataGridViewCertainSemester.Columns.Add("grade_value", "Моя отметка");
-            dataGridViewCertainSemester.Columns.Add("grade_value", "Средний балл в группе");
-            dataGridViewCertainSemester.Columns.Add("typeOfCertification_name", "Вид аттестации");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("subject_name", "Предмет");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("grade_value", "Моя отметка");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("grade_value", "Средний балл в группе");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("typeOfCertification_name", "Вид аттестации");
+            dataGridViewAllSubjectsAllSemesters.Columns.Add("semester_number", "Семестр");
         }
-
         // заполнение DataGridView
         private void ReadSingleRow(DataGridView dataGridView, IDataRecord record)
         {
@@ -75,9 +69,8 @@ namespace StudentRating.Forms
         }
         private void RefreshDataGridView(DataGridView dataGridView)
         {
-            string semesterNumber = comboBoxCertainSemester.Text;
             // -- получаем успеваемость для студента, вошедшего в систему -- // 
-            string queryStringGetPerformanceByStudentId = $"SELECT A.subject_name AS 'Предмет', B.grade_value AS 'Моя отметка', AVG(A.grade_value) AS 'Средний балл в группе', A.typeOfCertification_name AS 'Вид аттестации', A.semester_number AS 'Семестр' FROM (SELECT Subjects.subject_name, ROUND(AVG(CASE WHEN ISNUMERIC(Grades.grade_value) = 1 THEN CAST(Grades.grade_value AS decimal) END), 3) AS grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}' AND Semesters.semester_number = '{semesterNumber}' GROUP BY Subjects.subject_name, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number) AS A LEFT JOIN (SELECT Subjects.subject_name, Grades.grade_value FROM Subjects INNER JOIN Performance ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}' AND Students.student_id = '{studentId}' GROUP BY Subjects.subject_name, Grades.grade_value, Students.student_name) AS B ON A.subject_name = B.subject_name GROUP BY A.subject_name, A.typeOfCertification_name, A.semester_number, B.grade_value";
+            string queryStringGetPerformanceByStudentId = $"SELECT A.subject_name AS 'Предмет', B.grade_value AS 'Моя отметка', AVG(A.grade_value) AS 'Средний балл в группе', A.typeOfCertification_name AS 'Вид аттестации', A.semester_number AS 'Семестр' FROM (SELECT Subjects.subject_name, ROUND(AVG(CASE WHEN ISNUMERIC(Grades.grade_value) = 1 THEN CAST(Grades.grade_value AS decimal) END), 3) AS grade_value, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number FROM Performance INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}' GROUP BY Subjects.subject_name, Types_Of_Certification.typeOfCertification_name, Semesters.semester_number) AS A LEFT JOIN (SELECT Subjects.subject_name, Grades.grade_value FROM Subjects INNER JOIN Performance ON Performance.subject_id = Subjects.subject_id INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Performance.student_id = Students.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}' AND Students.student_id = '{studentId}' GROUP BY Subjects.subject_name, Grades.grade_value, Students.student_name) AS B ON A.subject_name = B.subject_name GROUP BY A.subject_name, A.typeOfCertification_name, A.semester_number, B.grade_value";
             SqlCommand sqlCommandGetPerformanceByStudentId = new SqlCommand(queryStringGetPerformanceByStudentId, dataBaseConnection.GetConnection());
             SqlDataReader readerGetPerformance = sqlCommandGetPerformanceByStudentId.ExecuteReader();
 
@@ -89,11 +82,11 @@ namespace StudentRating.Forms
 
             List<string> listNumericOrStringGrades = new List<string>(); // список отметок в изначальном строковом формате
             List<float> listNumericGrades = new List<float>(); // список числовых отметок
-            float studentsGPA = -1; // средний балл отметок студентов
+            float studentsGPA = 0; // средний балл отметок студентов
             string groupName = ""; // название группы студента, зашедшего в систему
 
             // -- получаем все отметки студентОВ из группы студента, зашедшего в систему          
-            string queryStringGetStudentsGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Groups.group_id = '{groupId}' AND Semesters.semester_number = '{semesterNumber}'";
+            string queryStringGetStudentsGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Groups.group_id = '{groupId}'";
             SqlCommand sqlCommandGetStudentsGrades = new SqlCommand(queryStringGetStudentsGrades, dataBaseConnection.GetConnection());
             SqlDataReader readerGetStudentsGrades = sqlCommandGetStudentsGrades.ExecuteReader();
             while (readerGetStudentsGrades.Read())
@@ -113,11 +106,9 @@ namespace StudentRating.Forms
                     listNumericGrades.Add(numericGrade);
                 }
             }
-            if (listNumericGrades.Count != 0)
-            {
-                // высчитываем средний балл всех студентов группы по всем предметам за все семестры
-                studentsGPA = (float)Math.Round(listNumericGrades.Sum() / listNumericGrades.Count(), 1);
-            }
+            // высчитываем средний балл всех студентов группы по всем предметам за все семестры
+            studentsGPA = (float)Math.Round(listNumericGrades.Sum() / listNumericGrades.Count(), 1);
+
             // получаем название группы студента, вошедшего в систему
             string queryStringGetGroupName = $"SELECT Groups.group_name FROM Groups WHERE Groups.group_id = '{groupId}'";
             SqlCommand sqlCommandGetGroupName = new SqlCommand(queryStringGetGroupName, dataBaseConnection.GetConnection());
@@ -127,21 +118,17 @@ namespace StudentRating.Forms
                 groupName = readerGetGroupName.GetString(0);
             }
             readerGetGroupName.Close();
-            if (studentsGPA != -1)
-            {
-                labelStudentsGPAValue.Text += groupName + ":  " + studentsGPA.ToString();
-            }
-            else
-            {
-                labelStudentsGPAValue.Text += groupName + ":  -";
-            }
 
+            labelStudentsGPA.Text += groupName + ":   " + studentsGPA.ToString(); // выводим средний балл в соответствующий лейбл
+
+
+            
             List<string> listNumericOrStringGradesForOneStudent = new List<string>(); // список отметок в изначальном строковом формате
             List<float> listNumericGradesForOneStudent = new List<float>(); // список числовых отметок
-            float studentGPA = -1; // средний балл отметок студентов
+            float studentGPA = 0; // средний балл отметок студентов
 
             // -- получаем все отметки студентА, зашедшего в систему          
-            string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Students.student_id = '{studentId}' AND Semesters.semester_number = '{semesterNumber}'";
+            string queryStringGetStudentGrades = $"SELECT Grades.grade_value FROM Performance INNER JOIN Grades ON Performance.grade_id = Grades.grade_id INNER JOIN Students ON Students.student_id = Performance.student_id INNER JOIN Groups ON Groups.group_id = Students.group_id WHERE Students.student_id = '{studentId}'";
             SqlCommand sqlCommandGetStudentGrades = new SqlCommand(queryStringGetStudentGrades, dataBaseConnection.GetConnection());
             SqlDataReader readerGetStudentGrades = sqlCommandGetStudentGrades.ExecuteReader();
             while (readerGetStudentGrades.Read())
@@ -161,29 +148,19 @@ namespace StudentRating.Forms
                     listNumericGradesForOneStudent.Add(numericGrade);
                 }
             }
-            if (listNumericGradesForOneStudent.Count != 0)
-            {
-                // высчитываем средний балл всех студентов группы по всем предметам за все семестры
-                studentGPA = (float)Math.Round(listNumericGradesForOneStudent.Sum() / listNumericGradesForOneStudent.Count(), 1);
-            }
-            if (studentGPA != -1)
-            {
-                labelStudentGPAValue.Text += studentGPA.ToString(); // выводим средний балл в соответствующий лейбл
-            }
-            else
-            {
-                labelStudentGPAValue.Text += "-";
-            }
-            dataGridViewCertainSemester.Sort(dataGridViewCertainSemester.Columns[1], ListSortDirection.Descending);
-            dataGridViewCertainSemester.Columns.Insert(0, new DataGridViewTextBoxColumn()
+            // высчитываем средний балл всех студентов группы по всем предметам за все семестры
+            studentGPA = (float)Math.Round(listNumericGradesForOneStudent.Sum() / listNumericGradesForOneStudent.Count(), 1);
+            labelStudentGPA.Text += studentGPA.ToString(); // выводим средний балл в соответствующий лейбл
+            dataGridViewAllSubjectsAllSemesters.Sort(dataGridViewAllSubjectsAllSemesters.Columns[4], ListSortDirection.Ascending);
+            dataGridViewAllSubjectsAllSemesters.Columns.Insert(0, new DataGridViewTextBoxColumn()
             {
                 Name = "Number",
                 HeaderText = "Номер строки"
             });
-            for (int i = 0; i < dataGridViewCertainSemester.Rows.Count; i++)
+            for (int i = 0; i < dataGridViewAllSubjectsAllSemesters.Rows.Count; i++)
             {
-                dataGridViewCertainSemester.Rows[i].Cells["Number"].Value = i + 1;
-                dataGridViewCertainSemester.Columns[0].Width = 100;
+                dataGridViewAllSubjectsAllSemesters.Rows[i].Cells["Number"].Value = i + 1;
+                dataGridViewAllSubjectsAllSemesters.Columns[0].Width = 100;
             }
             int columnIndex = 2;
             foreach (DataGridViewRow row in dataGridView.Rows)
@@ -216,7 +193,7 @@ namespace StudentRating.Forms
                 {
                     row.Cells[columnIndex].Style.ForeColor = Color.Red;
                 }
-            }
+            }            
         }
         private void SetDataGridViewHeight(DataGridView dataGridView)
         {

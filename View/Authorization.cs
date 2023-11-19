@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 
 namespace StudentRating
 {
-    public partial class FormAuthorization : Form
+    public partial class Authorization : Form
     {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        DataBase dataBaseConnection = new DataBase();
 
-        public int studentIdFromFormAuthorization;
-        public int groupIdFromFormAuthorization;
+        private int studentIdFromFormAuthorization;
+        private int groupIdFromFormAuthorization;
 
-        public FormAuthorization()
+        public Authorization()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -59,7 +59,7 @@ namespace StudentRating
                     }
                     readerGetGroupId.Close();
                     
-                    FormRatingJournal formRatingJournal = new FormRatingJournal(studentIdFromFormAuthorization, groupIdFromFormAuthorization);
+                    RatingJournal formRatingJournal = new RatingJournal(studentIdFromFormAuthorization, groupIdFromFormAuthorization);
                     
                     // берем ФИО студента для отображения на лэйбле FormRatingJournal
                     string querySelectStudentNameByLogin = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) FROM Students WHERE student_login = '{textBoxLogin.Text}'";

@@ -1,6 +1,6 @@
 ﻿namespace StudentRating
 {
-    partial class FormRatingJournal
+    partial class RatingJournal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRatingJournal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RatingJournal));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonCertainSubject = new System.Windows.Forms.Button();
