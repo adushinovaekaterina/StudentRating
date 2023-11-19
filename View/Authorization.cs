@@ -1,76 +1,26 @@
 ﻿using System;
-using StudentRating.Classes;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace StudentRating
 {
     public partial class Authorization : Form
     {
-        DataBase dataBaseConnection = new DataBase();
-
-        private int studentIdFromFormAuthorization;
-        private int groupIdFromFormAuthorization;
-
         public Authorization()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-        private void FormAuthorization_Load(object sender, EventArgs e)
-        {
-            dataBaseConnection.OpenConnection();
-        }
-        // кнопка Входа
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(textBoxLogin.Text) && !string.IsNullOrEmpty(textBoxPassword.Text))
             {
-                string querySelectStudent = $"SELECT student_id, student_login, student_password FROM Students WHERE student_login = '{textBoxLogin.Text}' and student_password = '{textBoxPassword.Text}'";
-                
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                DataTable dataTable = new DataTable();
-
-                SqlCommand sqlCommand = new SqlCommand(querySelectStudent, dataBaseConnection.GetConnection());
-
-                sqlDataAdapter.SelectCommand = sqlCommand;
-                sqlDataAdapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count == 1)
-                {
-                    // получаем studentId по логину пользователя для передачи studentId на другие формы
-                    string queryGetStudentIdByLogin = $"SELECT student_id FROM Students WHERE student_login = '{textBoxLogin.Text}'";
-                    SqlCommand sqlCommandGetStudentIdByLogin = new SqlCommand(queryGetStudentIdByLogin, dataBaseConnection.GetConnection());
-                    SqlDataReader readerGetStudentIdByLogin = sqlCommandGetStudentIdByLogin.ExecuteReader();
-                    while (readerGetStudentIdByLogin.Read())
-                    {
-                        studentIdFromFormAuthorization = readerGetStudentIdByLogin.GetInt32(0);                        
-                    }
-                    readerGetStudentIdByLogin.Close();
-
-                    // получаем groupId по studentId для передачи groupId на другие формы
-                    string queryGetGroupId = $"SELECT Groups.group_id FROM Students INNER JOIN Groups ON Students.group_id = Groups.group_id WHERE Students.student_id = '{studentIdFromFormAuthorization}'";
-                    SqlCommand sqlCommandGetGroupId = new SqlCommand(queryGetGroupId, dataBaseConnection.GetConnection());
-                    SqlDataReader readerGetGroupId = sqlCommandGetGroupId.ExecuteReader();
-                    while (readerGetGroupId.Read())
-                    {
-                        groupIdFromFormAuthorization = readerGetGroupId.GetInt32(0);                        
-                    }
-                    readerGetGroupId.Close();
-                    
-                    RatingJournal formRatingJournal = new RatingJournal(studentIdFromFormAuthorization, groupIdFromFormAuthorization);
-                    
-                    // берем ФИО студента для отображения на лэйбле FormRatingJournal
-                    string querySelectStudentNameByLogin = $"SELECT CONCAT (Students.student_surname, ' ', Students.student_name, ' ', Students.student_patronym) FROM Students WHERE student_login = '{textBoxLogin.Text}'";
-                    SqlCommand sqlCommandSelectStudentNameByLogin = new SqlCommand(querySelectStudentNameByLogin, dataBaseConnection.GetConnection());                    
-                    SqlDataReader reader = sqlCommandSelectStudentNameByLogin.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        string FIOstudent = reader.GetString(0);
-                        formRatingJournal.labelFIOStudent.Text = FIOstudent;                        
-                    }
-                    reader.Close();
+                List<int> listStudentIdGroupId = new List<int>();
+                listStudentIdGroupId = ControllerAuthorization.GetStudentIdGroupId(textBoxLogin.Text, textBoxPassword.Text);
+                if (listStudentIdGroupId != null)
+                {                    
+                    RatingJournal formRatingJournal = new RatingJournal(listStudentIdGroupId[0], listStudentIdGroupId[1]);
+                    ControllerAuthorization.SetFIOForRatingJournal(textBoxLogin.Text, formRatingJournal);
                     Hide();
                     formRatingJournal.ShowDialog();
                     Close();
@@ -134,10 +84,6 @@ namespace StudentRating
                 e.SuppressKeyPress = true;
                 buttonSignIn_Click(sender, e);
             }
-        }
-        private void FormAuthorization_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            dataBaseConnection.CloseConnection();
         }
     }
 }

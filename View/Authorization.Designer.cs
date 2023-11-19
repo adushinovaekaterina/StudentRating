@@ -182,8 +182,6 @@
             this.MinimizeBox = false;
             this.Name = "FormAuthorization";
             this.Text = "Авторизация";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAuthorization_FormClosed);
-            this.Load += new System.EventHandler(this.FormAuthorization_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEyeSlash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).EndInit();
             this.ResumeLayout(false);

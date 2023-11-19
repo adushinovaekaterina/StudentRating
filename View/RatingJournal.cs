@@ -91,7 +91,7 @@ namespace StudentRating
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите выйти из личного кабинета?", "Подтверждение выхода", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите выйти из аккаунта?", "Подтверждение выхода", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 Authorization formAuthorization = new Authorization();
