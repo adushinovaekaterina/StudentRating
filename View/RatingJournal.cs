@@ -10,8 +10,8 @@ namespace StudentRating
         private Button currentButton; // текущая кнопка
         private Form activeForm; // активная форма
 
-        public int studentIdFromRatingJournal;
-        public int groupIdFromRatingJournal;
+        private int studentIdFromRatingJournal;
+        private int groupIdFromRatingJournal;
 
         // конструктор формы Журнал рейтинга (родительская форма для остальных форм, связанных с журналом)
         public RatingJournal(int studentIdFromRatingJournal, int groupIdFromRatingJournal)
@@ -70,7 +70,7 @@ namespace StudentRating
         }
 
         // событие клика на кнопку "Журнал рейтинга за все семестры по всем предметам"
-        public void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
+        private void buttonAllSubjectsAllSemesters_Click(object sender, EventArgs e)
         {
             AllSubjectsAllSemesters formAllSubjectsAllSemesters = new AllSubjectsAllSemesters(studentIdFromRatingJournal, groupIdFromRatingJournal);
             
@@ -78,13 +78,13 @@ namespace StudentRating
         }
 
         // событие клика на кнопку "Журнал рейтинга за определенный семестр"
-        public void buttonCertainSemester_Click(object sender, EventArgs e)
+        private void buttonCertainSemester_Click(object sender, EventArgs e)
         {
             OpenChildForm(new CertainSemester(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }
 
         // событие клика на кнопку "Журнал рейтинга по определенному предмету"
-        public void buttonCertainSubject_Click(object sender, EventArgs e)
+        private void buttonCertainSubject_Click(object sender, EventArgs e)
         {
             OpenChildForm(new CertainSubject(studentIdFromRatingJournal, groupIdFromRatingJournal), sender);
         }

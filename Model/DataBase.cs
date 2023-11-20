@@ -12,21 +12,21 @@ namespace StudentRating.Classes
         private int studentIdFromDataBase;
         private int groupIdFromDataBase;
 
-        public void OpenConnection()
+        private void OpenConnection()
         {
             if (sqlConnection.State == ConnectionState.Closed)
             {
                 sqlConnection.Open();
             }
         }
-        public void CloseConnection()
+        private void CloseConnection()
         {
             if (sqlConnection.State == ConnectionState.Open)
             {
                 sqlConnection.Close();
             }
         }
-        public SqlConnection GetConnection()
+        private SqlConnection GetConnection()
         {
             return sqlConnection;
         }
@@ -140,6 +140,7 @@ namespace StudentRating.Classes
                 listNumericOrStringGrades.Add(readerGetStudentsGrades.GetString(0));
             }
             readerGetStudentsGrades.Close();
+            CloseConnection();
             return listNumericOrStringGrades;
         }
         public string GetGroupName(int groupId)
@@ -212,6 +213,7 @@ namespace StudentRating.Classes
                 ReadSingleRowForCertainSemester(dataGridView, readerGetPerformance); // выводим успеваемость в DataGridView
             }
             readerGetPerformance.Close();
+            CloseConnection();
         }
         public List<string> GetGroupGradesForCertainSemester(int groupId, int semesterNumber)
         {
@@ -228,6 +230,7 @@ namespace StudentRating.Classes
                 listNumericOrStringGrades.Add(readerGetStudentsGrades.GetString(0));
             }
             readerGetStudentsGrades.Close();
+            CloseConnection();
             return listNumericOrStringGrades;
         }
         public List<string> GetStudentGradesForCertainSemester(int studentId, int semesterNumber)
@@ -245,6 +248,7 @@ namespace StudentRating.Classes
                 listNumericOrStringGradesForOneStudent.Add(readerGetStudentGrades.GetString(0));
             }
             readerGetStudentGrades.Close();
+            CloseConnection();
             return listNumericOrStringGradesForOneStudent;
         }
 
@@ -272,6 +276,7 @@ namespace StudentRating.Classes
                 ReadSingleRowForCertainSubject(dataGridView, readerGetPerformance); // выводим успеваемость в DataGridView
             }
             readerGetPerformance.Close();
+            CloseConnection();
         }
         public List<string> GetGroupGradesForCertainSubject(int groupId, string subjectName, int semesterNumber)
         {
@@ -288,22 +293,56 @@ namespace StudentRating.Classes
                 listNumericOrStringGrades.Add(readerGetStudentsGrades.GetString(0));
             }
             readerGetStudentsGrades.Close();
+            CloseConnection();
             return listNumericOrStringGrades;
+        }
+        public ComboBox GetSemesters(string subjectName, ComboBox comboBoxCertainSemester)
+        {
+            OpenConnection();
+            // -- получаем семестры, в которых есть выбранный предмет
+            string queryStringGetSemestersForSubject = $"SELECT DISTINCT Semesters.semester_number FROM Performance INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id WHERE Subjects.subject_name = N'{subjectName}'";
+            SqlCommand sqlCommandGetSemestersForSubject = new SqlCommand(queryStringGetSemestersForSubject, GetConnection());
+            SqlDataReader readerGetSemestersForSubject = sqlCommandGetSemestersForSubject.ExecuteReader();
+
+            while (readerGetSemestersForSubject.Read())
+            {
+                comboBoxCertainSemester.Items.Add(readerGetSemestersForSubject.GetByte(0));
+            }
+            readerGetSemestersForSubject.Close();
+            CloseConnection();
+            return comboBoxCertainSemester;
         }
 
         public string GetTypeOfCertificationName(string subjectName, int semesterNumber)
         {
+            OpenConnection();
             string queryStringGetTypeOfCertification = $"SELECT DISTINCT Types_Of_Certification.typeOfCertification_name FROM Performance INNER JOIN Types_Of_Certification ON Performance.typeOfCertification_id = Types_Of_Certification.typeOfCertification_id INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id WHERE Subjects.subject_name = N'{subjectName}' AND Semesters.semester_number = '{semesterNumber}'";
             SqlCommand sqlCommandGetTypeOfCertification = new SqlCommand(queryStringGetTypeOfCertification, GetConnection());
             SqlDataReader readerGetTypeOfCertification = sqlCommandGetTypeOfCertification.ExecuteReader();
-            
+
             string typeOfCertificationName = "";
             while (readerGetTypeOfCertification.Read())
             {
                 typeOfCertificationName = readerGetTypeOfCertification.GetString(0);
             }
             readerGetTypeOfCertification.Close();
+            CloseConnection();
             return typeOfCertificationName;
+        }
+        public ComboBox GetSubjects(ComboBox comboBoxCertainSubject)
+        {
+            OpenConnection();
+            // -- получаем список предметов для вывода в comboBoxCertainSubject
+            string queryStringGetSubjectsName = "SELECT subject_name FROM Subjects";
+            SqlCommand sqlCommandGetSubjectsName = new SqlCommand(queryStringGetSubjectsName, GetConnection());
+            SqlDataReader readerGetSubjectsName = sqlCommandGetSubjectsName.ExecuteReader();
+            while (readerGetSubjectsName.Read())
+            {
+                comboBoxCertainSubject.Items.Add(readerGetSubjectsName.GetString(0));
+            }
+            readerGetSubjectsName.Close();
+            CloseConnection();
+            return comboBoxCertainSubject;
         }
     }
 }

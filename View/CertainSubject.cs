@@ -1,6 +1,5 @@
 ﻿using StudentRating.Classes;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,8 +8,8 @@ namespace StudentRating.Forms
     public partial class CertainSubject : Form
     {
         DataBase dataBaseConnection = new DataBase();
-        public int studentId;
-        public int groupId;
+        private int studentId;
+        private int groupId;
         public CertainSubject(int studentId, int groupId)
         {
             InitializeComponent();
@@ -20,19 +19,8 @@ namespace StudentRating.Forms
 
         private void FormCertainSubject_Load(object sender, EventArgs e)
         {
-            dataBaseConnection.OpenConnection();
-
-            CreateColumns();            
-
-            // -- получаем список предметов для вывода в comboBoxCertainSubject
-            string queryStringGetSubjectsName = "SELECT subject_name FROM Subjects";
-            SqlCommand sqlCommandGetSubjectsName = new SqlCommand(queryStringGetSubjectsName, dataBaseConnection.GetConnection());
-            SqlDataReader readerGetSubjectsName = sqlCommandGetSubjectsName.ExecuteReader();
-            while (readerGetSubjectsName.Read())
-            {
-                comboBoxCertainSubject.Items.Add(readerGetSubjectsName.GetString(0));
-            }
-            readerGetSubjectsName.Close();
+            CreateColumns();
+            ControllerCertainSubject.GetSubjects(comboBoxCertainSubject);
             comboBoxCertainSubject.Text = comboBoxCertainSubject.Items[0].ToString();
         }
         // ПРЕДМЕТЫ
@@ -42,16 +30,8 @@ namespace StudentRating.Forms
             labelStudentsGPAValue.Text = null;
             comboBoxCertainSemester.Items.Clear();
 
-            // -- получаем семестры, в которых есть выбранный предмет
-            string queryStringGetSemestersForSubject = $"SELECT DISTINCT Semesters.semester_number FROM Performance INNER JOIN Semesters ON Performance.semester_id = Semesters.semester_id INNER JOIN Subjects ON Performance.subject_id = Subjects.subject_id WHERE Subjects.subject_name = N'{comboBoxCertainSubject.Text}'";
-            SqlCommand sqlCommandGetSemestersForSubject = new SqlCommand(queryStringGetSemestersForSubject, dataBaseConnection.GetConnection());
-            SqlDataReader readerGetSemestersForSubject = sqlCommandGetSemestersForSubject.ExecuteReader();
-
-            while (readerGetSemestersForSubject.Read())
-            {
-                comboBoxCertainSemester.Items.Add(readerGetSemestersForSubject.GetByte(0));
-            }
-            readerGetSemestersForSubject.Close();
+            string subjectName = comboBoxCertainSubject.Text;
+            ControllerCertainSubject.GetSemesters(subjectName, comboBoxCertainSemester);
             try
             {
                 comboBoxCertainSemester.Text = comboBoxCertainSemester.Items[0].ToString();

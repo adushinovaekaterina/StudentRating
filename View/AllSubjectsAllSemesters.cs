@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
@@ -8,8 +7,8 @@ namespace StudentRating.Forms
 {
     public partial class AllSubjectsAllSemesters : Form
     {
-        public int studentId;
-        public int groupId;
+        private int studentId;
+        private int groupId;
 
         public AllSubjectsAllSemesters(int studentId, int groupId)
         {

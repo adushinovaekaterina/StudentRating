@@ -1,6 +1,7 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,7 +9,7 @@ namespace StudentRating
 {
     public class ControllerCertainSubject
     {
-        static DataBase dataBase = new DataBase();
+        private static DataBase dataBase = new DataBase();
 
         // получить успеваемость студента для dataGridView
         public static void GetPerformanceForStudent(int studentId, int groupId, DataGridView dataGridView, string subjectName, int semesterNumber)
@@ -46,10 +47,19 @@ namespace StudentRating
             }
             return groupGPA;
         }
+        // получить семестры
+        public static ComboBox GetSemesters(string subjectName, ComboBox comboBoxCertainSemester)
+        {
+            return dataBase.GetSemesters(subjectName, comboBoxCertainSemester);
+        }
         // получить название вида аттестации
         public static string GetTypeOfCertification(string subjectName, int semesterNumber)
         {
             return dataBase.GetTypeOfCertificationName(subjectName, semesterNumber);
+        }
+        public static ComboBox GetSubjects(ComboBox comboBoxCertainSubject)
+        {
+            return dataBase.GetSubjects(comboBoxCertainSubject);
         }
     }
 }

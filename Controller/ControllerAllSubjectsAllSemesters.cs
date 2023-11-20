@@ -8,7 +8,7 @@ namespace StudentRating
 {
     public class ControllerAllSubjectsAllSemesters
     {
-        static DataBase dataBase = new DataBase();
+        private static DataBase dataBase = new DataBase();
         
         // получить успеваемость студента для dataGridView
         public static void GetPerformanceForStudent(int studentId, int groupId, DataGridView dataGridView)

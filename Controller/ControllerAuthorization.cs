@@ -5,7 +5,7 @@ namespace StudentRating
 {
     public class ControllerAuthorization
     {
-        static DataBase dataBase = new DataBase();
+        private static DataBase dataBase = new DataBase();
 
         // получить studentId по логину и паролю
         public static List<int> GetStudentIdGroupId(string login, string password)

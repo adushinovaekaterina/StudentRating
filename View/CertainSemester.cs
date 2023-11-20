@@ -1,11 +1,7 @@
 ﻿using StudentRating.Classes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace StudentRating.Forms
@@ -13,8 +9,8 @@ namespace StudentRating.Forms
     public partial class CertainSemester : Form
     {
         DataBase dataBaseConnection = new DataBase();
-        public int studentId;
-        public int groupId;
+        private int studentId;
+        private int groupId;
         public CertainSemester(int studentId, int groupId)
         {
             InitializeComponent();
@@ -24,8 +20,6 @@ namespace StudentRating.Forms
 
         private void FormCertainSemester_Load(object sender, EventArgs e)
         {
-            dataBaseConnection.OpenConnection();
-
             CreateColumns();            
             comboBoxCertainSemester.Text = comboBoxCertainSemester.Items[0].ToString();
         }
