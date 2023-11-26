@@ -21,7 +21,7 @@ namespace StudentRating
             return dataBase.GetGroupName(groupId);
         }
         // рассчитать средний балл в группе
-        public static float GetGroupGPA(int groupdId, int semesterNumber)
+        public static float CalculationGroupGPA(int groupdId, int semesterNumber)
         {
             // получаем отметки студентОВ в группе
             List<string> listNumericOrStringGrades = new List<string>();
@@ -46,7 +46,7 @@ namespace StudentRating
             }
             return groupGPA;
         }
-        public static float GetStudentGPA(int studentId, int semesterNumber)
+        public static float CalculationStudentGPA(int studentId, int semesterNumber)
         {
             // получаем отметки студентА в группе
             List<string> listNumericOrStringGradesForOneStudent = new List<string>(); // список числовых отметок

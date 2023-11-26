@@ -1,7 +1,6 @@
 ﻿using StudentRating.Classes;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,7 +21,7 @@ namespace StudentRating
             return dataBase.GetGroupName(groupId);
         }
         // рассчитать средний балл в группе
-        public static float GetGroupGPA(int groupdId, string subjectName, int semesterNumber)
+        public static float CalculationGroupGPA(int groupdId, string subjectName, int semesterNumber)
         {
             // получаем отметки студентОВ в группе
             List<string> listNumericOrStringGrades = new List<string>();

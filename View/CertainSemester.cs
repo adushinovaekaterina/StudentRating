@@ -1,5 +1,4 @@
-﻿using StudentRating.Classes;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,7 +7,6 @@ namespace StudentRating.Forms
 {
     public partial class CertainSemester : Form
     {
-        DataBase dataBaseConnection = new DataBase();
         private int studentId;
         private int groupId;
         public CertainSemester(int studentId, int groupId)
@@ -52,10 +50,10 @@ namespace StudentRating.Forms
 
             // расчет среднего балла группы
             string groupName = ControllerCertainSemester.GetGroupName(groupId);
-            float groupGPA = ControllerCertainSemester.GetGroupGPA(groupId, semesterNumber);
+            float groupGPA = ControllerCertainSemester.CalculationGroupGPA(groupId, semesterNumber);
 
             // расчет среднего балла студента
-            float studentGPA = ControllerCertainSemester.GetStudentGPA(studentId, semesterNumber);
+            float studentGPA = ControllerCertainSemester.CalculationStudentGPA(studentId, semesterNumber);
 
             if (groupGPA != -1)
             {

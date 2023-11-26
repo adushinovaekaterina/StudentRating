@@ -44,10 +44,10 @@ namespace StudentRating.Forms
 
             // вывод среднего балла группы
             string groupName = ControllerAllSubjectsAllSemesters.GetGroupName(groupId);
-            float groupGPA = ControllerAllSubjectsAllSemesters.GetGroupGPA(groupId);
+            float groupGPA = ControllerAllSubjectsAllSemesters.CalculationGroupGPA(groupId);
 
             // вывод среднего балла студента
-            float studentGPA =  ControllerAllSubjectsAllSemesters.GetStudentGPA(studentId);
+            float studentGPA =  ControllerAllSubjectsAllSemesters.CalculationStudentGPA(studentId);
 
             if (groupGPA != -1)
             {
